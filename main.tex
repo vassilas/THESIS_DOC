@@ -1,0 +1,184 @@
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+\documentclass[a4paper,11pt]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[greek,english]{babel}
+\usepackage{alphabeta}
+%\usepackage[LGR, T1]{fontenc}
+\linespread{1.1} % Line spacing
+
+
+
+% Hyper references - PDF 
+% -----------------------
+%\usepackage[unicode]{hyperref}
+%\usepackage{bookmark}
+\usepackage[pdfencoding=auto]{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=black,
+    filecolor=black,      
+    urlcolor=black,
+    citecolor=black,
+%   allcolors=blue,
+    pdftitle={Sharelatex Example},
+}
+
+% Colors
+% -----------------------
+\usepackage{color}
+
+
+% Multi-columns
+% -----------------------
+\usepackage{multicol}
+
+
+% Pictures
+% -----------------------
+\usepackage{wrapfig}
+\usepackage{graphicx}
+\graphicspath{ {Pictures/} }
+
+
+
+% Upper and Footer Lines
+% -----------------------
+\usepackage{fancyhdr}
+\usepackage{lastpage}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[LO]{Recursive Ling $2^{n-1}$ Binary Adder}
+\fancyfoot[C,CO]{Page \thepage\ from \pageref{LastPage}}
+\setlength{\headheight}{14pt}
+
+
+
+% Management in a large project
+% Multi-file LaTeX projects
+% -----------------------
+\usepackage{import}
+
+
+
+% For Equations
+% -----------------------
+\usepackage{mathtools}
+\usepackage{amssymb}
+\usepackage{amsmath}
+
+
+
+% For Bibliography
+% 2. Includes "References" in the table of contents
+% -----------------------
+\usepackage{natbib}
+\usepackage[nottoc]{tocbibind}
+\renewcommand{\refname}{Referenceees}
+
+
+
+
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+%	Document Begin
+%-----------------------------------------------------------------------
+\begin{document}
+
+
+\import{./}{titlepage.tex}
+
+
+\tableofcontents
+\clearpage
+
+\listoffigures
+\listoftables
+\clearpage
+
+
+
+% Introduction
+% -------------------------
+\import{./}{Introduction.tex}
+\clearpage
+
+
+
+% Binary Addition
+% -------------------------
+\import{./}{BinaryAddition.tex}
+\clearpage
+
+
+
+% Adders Family
+% -------------------------
+\import{./}{AddersFamily.tex}
+\clearpage
+
+
+
+% Prefix Adders
+% -------------------------
+\import{./}{PrefixAdders.tex}
+\clearpage
+
+
+
+% Ling Adders
+% -------------------------
+\import{./}{Ling.tex}
+\clearpage
+
+
+
+% Jackson Adders
+% -------------------------
+\import{./}{Jackson.tex}
+\clearpage
+
+
+
+% Modular Adder
+% -------------------------
+\import{./}{modAdder.tex}
+\clearpage
+
+
+
+
+% Development
+% -------------------------
+\import{./}{Development.tex}
+\clearpage
+
+
+
+
+% Proofs
+% -------------------------
+\import{./}{Proofs.tex}
+\clearpage
+
+
+
+
+% References 
+% -------------------------
+\bibliographystyle{unsrt}
+\bibliography{references}
+
+\end{document}
+% ---------------------------------------------------------------------
