@@ -3,7 +3,7 @@
 %-----------------------------------------------------------------------
 \documentclass[a4paper,11pt]{article}
 \usepackage[utf8]{inputenc}
-\usepackage[greek,english]{babel}
+% \usepackage[english,greek]{babel} % \selectlanguage{english}
 \usepackage{alphabeta}
 %\usepackage[LGR, T1]{fontenc}
 \linespread{1.1} % Line spacing
@@ -30,6 +30,8 @@
 \usepackage{color}
 
 
+
+
 % Multi-columns
 % -----------------------
 \usepackage{multicol}
@@ -37,8 +39,9 @@
 
 % Pictures
 % -----------------------
-\usepackage{wrapfig}
 \usepackage{graphicx}
+\usepackage{wrapfig}    % for wrapping images into text and other images
+% \usepackage{caption2}   % For renaming caption of Figures
 \graphicspath{ {Pictures/} }
 
 
@@ -67,7 +70,7 @@
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{amsmath}
-
+\numberwithin{equation}{section} % Change the type of equation numbering
 
 
 % For Bibliography
@@ -75,7 +78,7 @@
 % -----------------------
 \usepackage{natbib}
 \usepackage[nottoc]{tocbibind}
-\renewcommand{\refname}{Referenceees}
+
 
 
 
@@ -84,10 +87,21 @@
 %-----------------------------------------------------------------------
 %-----------------------------------------------------------------------
 
+% Change Default Latex naming 
+% http://www.tex.ac.uk/FAQ-fixnam.html
+% -----------------------
+% \renewcommand{\refname}{Referenceees}
+\renewcommand{\contentsname}{Περιεχόμενα}
+\renewcommand{\figurename}{Εικόνα}
+\renewcommand{\tablename}{Πίνακας}
+\renewcommand{\bibname}{Βιβλιογραφία}
+% \renewcommand[\listtablename]{Λίστα Πινάκων}
+% \renewcommand[\listfigurename]{Λίστα Εικόνων}
 
 
-
-
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
+%-----------------------------------------------------------------------
 
 
 

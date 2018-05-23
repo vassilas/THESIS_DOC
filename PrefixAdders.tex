@@ -59,6 +59,50 @@ $\circledast$ την παρακάτω λειτουργιά :
 (G_i,P_i) &= (g_i,p_i) \circledast (G_{i-1},P_{i-1})
 \end{split}
 \end{equation}
+Η απόδειξη :
+Εφόσον δεν υπάρχει κρατούμενο εισόδου ($c_{in} = c_{-1} = 0$) έχουμε 
+\begin{equation*}
+\begin{split}
+    c_0 &= g_0 + p_0c_{-1} \\
+    c_0 &= g_0 \\
+    c_0 &= G_0
+\end{split}
+\end{equation*}
+έστι το αποτέλεσμα ισχύει για $i-1$ \\
+Αν $i>0$ και $c_{i-1} = G_{i-1}$ τοτε
+\begin{equation*}
+\begin{split} 
+    (G_i,P_i)   &= (g_i,p_i) \circledast (G_{i-1},P_{i-1}) \\
+                &= (g_i,p_i) \circledast (c_{i-1},P_{i-1}) \\
+                &= (g_i + p_ic_{i-1} , p_iP_{i-1}) \\
+            G_i &= g_i + p_ic_{i-1} \\
+            G_i &= c_i
+\end{split}
+\end{equation*}
+Επίσης ο τελεστής $\circledast$ έχει προσεταιριστική ιδιότητα 
+\begin{equation*}
+\begin{split} 
+    (g_i,p_i)\circledast(g_j,p_j)\circledast(g_k,p_k) &= [g_i + p_ig_j,p_ip_j]\circledast(g_k,p_k) \\
+    &= (g_i,p_i)\circledast[g_j + p_jg_k,p_jp_k]\\
+    &= ( g_i + p_ig_j + p_ip_jg_k , p_ip_jp_k )
+\end{split}
+\end{equation*}
+
+Παρακάτω παρουσιάζεται ένα γράφημα-δέντρο ( Εικόνα [\ref{Serial-PrefixTree}] ) ενός απλού διάδοσης κρατουμένου 
+αθροιστή σε αναγόμενο σε πρόβλημα προθέματος. 
+\\
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.45]{Serial-Prefix.png}
+\caption{Serial-Prefix Tree Adder}
+\label{Serial-PrefixTree}
+\end{figure}
+\\
+Σε κάθε μαύρο κόμβο ουσιαστικά υλοποιείται η λογική συνάρτηση του τελεστή $\circledast$
+που παρουσιάστηκε προηγουμένως. Ο παραπάνω αθροιστής υλοποιεί τον προθεματικό αλγόριθμο
+σειριακά με αποτέλεσμα να είναι πολύ αργό το μοντέλο αλλά να καταλαμβάνει μικρότερο εμβαδόν
+από άλλες τοπολογίες αθροιστών προθέματος που θα παρουσιαστούν στην συνέχεια.
+
 
 
 
@@ -68,6 +112,16 @@ $\circledast$ την παρακάτω λειτουργιά :
 
 \subsection{Παράλληλοι Προθεματικοί Αθροιστές}
 
+\subsubsection{Brent-Kung Adder}
+
+\subsubsection{Ladner-Fischer Adder}
+
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.5]{Ladner-Fischer.png}
+\caption{Ladner-Fischer Prefix Tree Adder}
+\label{Ladner-FischerTree}
+\end{figure}
 
 
 
