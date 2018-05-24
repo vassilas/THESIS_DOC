@@ -54,6 +54,7 @@ $\circledast$ την παρακάτω λειτουργιά :
 καθώς και το κρατούμενο εξόδου $c_n$ για έναν αθροιστή των n-bits όπου $c_i = G_i$
 και για $n \geq i \geq 0$ έχουμε 
 \begin{equation}
+\equationame{Αλγεβρικός ορισμός των $(G_i,P_i)$}
 \begin{split}
 (G_0,P_0) &= (g_0,p_0)\\
 (G_i,P_i) &= (g_i,p_i) \circledast (G_{i-1},P_{i-1})
@@ -108,6 +109,12 @@ $\circledast$ την παρακάτω λειτουργιά :
 
 
 
+
+
+
+
+
+
 \subsection{Παράλληλοι Προθεματικοί Αθροιστές}
 
 \subsubsection{Brent-Kung Adder}
@@ -125,4 +132,82 @@ $\circledast$ την παρακάτω λειτουργιά :
 
 
 
+
+
+
+
+
 \subsection{Δέντρα-Δομές Προθεμάτων}
+R.P. Brent and H.T. Kung, A Regular Layout for Parallel
+Adders,º IEEE Trans. Computers, vol. 31, no. 3, pp. 260-264, Mar.
+1982.
+\\\\
+P.M. Kogge and H.S. Stone, A Parallel Algorithm for the Efficient
+Solution of a General Class of Recurrence Equations, IEEE Trans.
+Computers, vol. 22, no. 8, pp. 783-791, Aug. 1973.
+\\\\
+J. Sklansky, Conditional Sum Addition Logic, IRE Trans.
+Electronic Computers, vol. 9, no. 6, pp. 226-231, June 1960.
+
+
+
+
+
+
+
+
+
+
+
+\subsection{Προθεματικός αθροιστής με κρατούμενο εισόδου}
+Οι αθροιστές προθέματος που παρουσιάστηκαν παραπάνω αναπτύχθηκαν με την αρχική
+υπόθεση έλλειψης κρατουμένου εισόδου ή $c_{in} = 0$. Ενσωματώνοντας στους παραπάνω 
+αθροιστές την επιλογή κρατουμένου εισόδου $c_{in}$, το οποίο ταυτίζεται με το σήμα $c_{-1}$
+, ορίζεται το αντίστοιχο ζεύγος σημάτων $(G'_i,P'_i)$, όπου είναι το Grou Generate και 
+Group Propagate αντίστοιχα με την διαφορά πως συμπεριλαμβάνουν και το κρατούμενο εισόδου.
+Ακολουθεί ο αλγεβρικός ορισμός των σημάτων $G'_i$ και $P'_i$ ( εξίσωση \ref{eq:GP_with_carry_in} )
+\begin{equation}
+    \equationame{Αλγεβρικός ορισμός των $(G'_i,P'_i)$}
+    \label{eq:GP_with_carry_in}
+    (G'_i,P'_i) = 
+    \begin{cases}
+        (g_0 + p_0*c_{-1} , p_0)   , & i = 0\\
+        (g_i,p_i)\circledast (G'_{i-1},P'_{i-1}) , & 1 \leq i \leq n-1
+    \end{cases}
+\end{equation}
+Επίσης, στην περίπτωση που συνυπολογίζεται και το κρατούμενο εισόδου, προφανώς ισχύει και 
+$c_i = G'_i$. Για την ανάκτηση των $(G'_i,P'_i)$ χρησιμοποιείται ο παρακάτω τύπος:
+\begin{equation}
+    \equationame{Ανάκτηση των $(G'_i,P'_i)$ από $(G_i,P_i)$}
+    (G'_i,P'_i) = (G_i + P_i*c_{-1} , P_i)
+\end{equation}
+το οποίο αποδεικνύεται επίσης επαγωγικά στο $i$. Για $i=0$ ισχύει :
+\begin{equation*}
+    (G'_0,P'_0) = (g_0 + p_0*c_{-1} , p_0) =  (G_0 + P_0*c_{-1} , P_0)
+\end{equation*}
+Υποθέτοντας πως η σχέση ισχύει και για $i=k-1$, δηλαδή
+\begin{equation*}
+    (G'_{k-1},P'_{k-1}) = (G_{k-1} + P_{k-1}*c_{-1} , P_{k-1})
+\end{equation*}
+Τότε για $i=k$ :
+\begin{equation*}
+    \begin{split}
+        (G'_k,P'_k) &= (g_k,p_k) \circledast (G'_{k-1},P'_{k-1})\\
+                    &= (g_k,p_k) \circledast (G_{k-1} + P_{k-1}*c_{-1} , P_{k-1}) \\
+                    &= ( g_k + p_k*(G_{k-1} + P_{k-1}*c_{-1}) , p_k*P_{k-1} ) \\
+                    &= \big( (g_k + p_kG_{k-1}) + p_kP_{k-1}c_{-1} , P_k  \big) \\
+                    &= ( G_k + P_k*c_{-1} , P_k )
+    \end{split}
+\end{equation*}
+\\
+Όσο αφορά την τροποποίηση των γραφημάτων για τον συνυπολογισμό κρατουμένου εισόδου
+είναι δυνατό να κρατηθεί ανέπαφη η δομή υπολογίζοντας τα Group Generate και Group Propagate 
+$(G_i,P_i)$ χωρίς το κρατούμενο εισόδου  και στο τέλος προστίθεται ένα ακόμα επίπεδο
+για κάθε δυαδικό ψηφίο $i$ που υλοποιείται η λογική $G_ι + P_ι*c_{-1}$.
+\\\\
+\textcolor{red}{[Βάλε σχήμα που δείχνει το extra επίπεδο]}
+\\\\
+\textcolor{red}{[Βάλε και σχήμα με Kogge-Stone δομή με $c_{in}$]}
+\\\\
+
+
