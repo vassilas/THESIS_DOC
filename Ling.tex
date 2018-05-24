@@ -66,7 +66,9 @@
 Ως γνωστόν, κάθε ένα δυαδικό ψηφίο του αθροίσματος με την τεχνική πρόβλεψης κρατουμένου 
 υπολογιζόταν με την συνάρτηση $sum_i = G_{i-1:0} \oplus x_i $ οπου $x_i = a_i \oplus b_i$.
 Τελικά, το άθροισμα με την παραγοντοποίηση του Ling υπολογίζεται με :
-\begin{equation}\label{eq:ling_sum_1}
+\begin{equation}
+\label{eq:ling_sum_1}
+\equationame{άθροισμα κατά Ling}
 \begin{split}
     sum_i &= G_{i-1:0} \oplus x_i \\
           &= (p_{i-1} * H_{i-1:0}) \oplus x_i
@@ -89,21 +91,43 @@
 εισόδων των λογικών πυλών (fan-in). Όμως αφαιρώντας από κάθε όρο του Group Generate 
 σήματος ενα propagate έχει ως αποτέλεσμα να αυξάνεται η πολυπλοκότητα του τελευταίου 
 σταδίου όπου υπολογίζεται το άθροισμα (εξίσωση [\ref{eq:ling_sum_1}]). 
-Παρατηρείται στην εξίσωση \ref{eq:ling_sum_1} πως πρέπει να υπολογιστέι το $H$ 
-στην συνέχεια να πραγματοποιηθεί η λογική του πράξη AND με το σήμα $p_i$ και τελος
-η έξοδος της πυλης AND να οδηγήσει την είσοδο της πύλης XOR σε συνδιασμό με το
-σήμα $x_i$.
-\\\\
-\textcolor{red}{[Figure with logic diagram of whats described above}
-\\\\
+Παρατηρείται στην εξίσωση \ref{eq:ling_sum_1} πως πρέπει να υπολογιστεί το $H$ 
+στην συνέχεια να πραγματοποιηθεί η λογική του πράξη AND με το σήμα $p_i$ και τέλος
+η έξοδος της πύλης AND να οδηγήσει την είσοδο της πύλης XOR σε συνδυασμό με το
+σήμα $x_i$ ( Εικόνα \ref{fig:Ling_sum_1} ).
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}{.4\textwidth}
+        \centering
+        \includegraphics[scale=0.7]{Ling_sum_1.png}
+        \caption{Απλή προσέγγιση}
+        \label{fig:Ling_sum_1}
+    \end{subfigure}
+    \begin{subfigure}{.4\textwidth}
+        \centering
+        \includegraphics[scale=0.7]{Ling_sum_2.png}
+        \caption{Εναλλακτική προσέγγιση με πολυπλέκτη}
+        \label{fig:Ling_sum_2}
+    \end{subfigure}
+    \caption{Λογική υπολογισμού του αθροίσματος κατά Ling}
+    \label{fig:Ling_sum}
+\end{figure}
+
+
+% \\\\
+% \textcolor{red}{[Figure with logic diagram of whats described above}
+% \\\\
 Η εξίσωση \ref{eq:ling_sum_1} αυτή μπορεί να εκφραστεί διαφορετικά
 βοηθώντας στην μείωση της λογικής που απαιτείται για τον υπολογισμό του αθροίσματος.
-\begin{equation}\label{eq:ling_sum_2}
+\begin{equation}
+\label{eq:ling_sum_2}
+\equationame{άθροισμα κατά Ling (2)}
     sum_i = H_{i-1:0} ? \big(p_{i-1} \oplus x_i\big) : x_i
 \end{equation}
-\\\\
-\textcolor{red}{[Figure with logic diagram of whats described above}
-\\\\
+% \\\\
+% \textcolor{red}{[Figure with logic diagram of whats described above}
+% \\\\
 
 %------------------------------------------------
  Παρατηρούμε πως η μέθοδος του Ling μειώνει την πολυπλοκότητα μόνο στο πρώτο επίπεδο 

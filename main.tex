@@ -40,11 +40,13 @@
 % Pictures
 % -----------------------
 \usepackage{graphicx}
-\usepackage{wrapfig}    % for wrapping images into text and other images
-% \usepackage{caption2}   % For renaming caption of Figures
+\usepackage{wrapfig}        % for wrapping images into text and other images
+% \usepackage{caption2}     % For renaming caption of Figures
 \graphicspath{ {Pictures/} }
-
-
+\usepackage{subcaption}     % using Caption to sub-figures
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\usepackage{float}          % Places the float at precisely the location in the LaTeX code
 
 % Upper and Footer Lines
 % -----------------------
@@ -70,7 +72,19 @@
 \usepackage{mathtools}
 \usepackage{amssymb}
 \usepackage{amsmath}
-\numberwithin{equation}{section} % Change the type of equation numbering
+
+
+
+% list of equations
+% -----------------------
+\usepackage{tocloft} 
+% define list of equations
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\equationame}[1]{
+   \addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}
+}
+\setlength{\cftmyequationsnumwidth}{2.3em}
+\setlength{\cftmyequationsindent}{1.5em}
 
 
 % For Bibliography
@@ -80,8 +94,12 @@
 \usepackage[nottoc]{tocbibind}
 
 
-
-
+% Changing Numbering Scheme to Include Section Number
+% -----------------------
+\usepackage{chngcntr}
+\counterwithin{figure}{section}
+\counterwithin{table}{section}
+\numberwithin{equation}{section} % Change the type of equation numbering
 
 %-----------------------------------------------------------------------
 %-----------------------------------------------------------------------
@@ -95,6 +113,7 @@
 \renewcommand{\figurename}{Εικόνα}
 \renewcommand{\tablename}{Πίνακας}
 \renewcommand{\bibname}{Βιβλιογραφία}
+\newcommand{\listequationsname}{\Large{List of Equations}}
 % \renewcommand[\listtablename]{Λίστα Πινάκων}
 % \renewcommand[\listfigurename]{Λίστα Εικόνων}
 
@@ -119,6 +138,7 @@
 
 \listoffigures
 \listoftables
+\listofmyequations
 \clearpage
 
 
