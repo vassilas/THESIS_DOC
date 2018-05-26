@@ -132,3 +132,25 @@
 %------------------------------------------------
  Παρατηρούμε πως η μέθοδος του Ling μειώνει την πολυπλοκότητα μόνο στο πρώτο επίπεδο 
  του αθροιστή
+ 
+ 
+ 
+ 
+ 
+ 
+ \subsection{Αραίωση σε Ling Αρχιτεκτονικές}
+ Sparsness-2
+ \begin{equation*}
+    \begin{split}
+        sum_i &= x_i \oplus G_{i-1:0}\\
+        sum_i &= x_i \oplus p_{i-1}*H_{i-1:0}\\
+        sum_i &= H_{i-1:0} ? x_i \oplus p_{i-1} : x_i\\
+        sum_{i+1} &= x_{i+1} \oplus G_{i:0}\\
+        sum_{i+1} &= x_{i+1} \oplus (g_i + p_i*G_{i-1:0})\\
+        sum_{i+1} &= x_{i+1} \oplus (g_i + p_i*p_{i-1}*H_{i-1:0})\\
+        sum_{i+1} &= H_{i-1:0} ? x_{i+1} \oplus (g_i + p_i*p_{i-1}) : x_{i+1} \oplus g_i
+    \end{split} 
+ \end{equation*}
+ 
+ 
+ 

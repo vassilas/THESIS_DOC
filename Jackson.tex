@@ -208,7 +208,19 @@ $R^{j-k+1}_{j:i}$
 \\\\\\
 \textcolor{red}{[Δημιουργία Jackson αθροιστή]}
 
-
+\subsection{Αραίωση σε Jackson Αρχιτεκτονικές}
+Sparsness-2
+ \begin{equation*}
+    \begin{split}
+        sum_i &= x_i \oplus G_{i-1:0}\\
+        sum_i &= x_i \oplus D_{i-1:k}R^{i-k}_{i-1:0}\\
+        sum_i &= R^{i-k}_{i-1:0} ? x_i \oplus D_{i-1:k} : x_i\\
+        sum_{i+1} &= x_{i+1} \oplus G_{i:0}\\
+        sum_{i+1} &= x_{i+1} \oplus (g_i + p_i*G_{i-1:0})\\
+        sum_{i+1} &= x_{i+1} \oplus (g_i + p_i*D_{i-1:k}R^{i-k}_{i-1:0})\\
+        sum_{i+1} &= R^{i-k}_{i-1:0} ? x_{i+1} \oplus (g_i + p_i*D_{i-1:k}) : x_{i+1} \oplus g_i
+    \end{split} 
+ \end{equation*}
 
 
 
