@@ -101,6 +101,32 @@
 \counterwithin{table}{section}
 \numberwithin{equation}{section} % Change the type of equation numbering
 
+
+% Plots
+% -----------------------
+\usepackage{pgfplots}
+\usepackage{textcomp}
+\pgfplotsset{width=10cm,compat=1.9}
+
+
+% Multicol
+% -----------------------
+\usepackage{multicol}
+
+
+% glossaries
+% -----------------------
+% \usepackage{glossaries}
+% \makeglossaries
+% \newglossaryentry{FO4}
+% {
+%     name=FO4,
+%     description={Fan-out of 4 is a process-dependent delay metric used in digital CMOS technologies}
+% }
+
+
+
+
 %-----------------------------------------------------------------------
 %-----------------------------------------------------------------------
 %-----------------------------------------------------------------------
@@ -132,6 +158,8 @@
 
 \import{./}{titlepage.tex}
 
+% Blank page
+\newpage\null\thispagestyle{empty}\newpage
 
 \tableofcontents
 \clearpage
@@ -141,6 +169,9 @@
 \listofmyequations
 \clearpage
 
+
+% Blank page
+% \newpage\null\thispagestyle{empty}\newpage
 
 
 % Introduction
