@@ -6,9 +6,15 @@
 % \usepackage[english,greek]{babel} % \selectlanguage{english}
 \usepackage{alphabeta}
 %\usepackage[LGR, T1]{fontenc}
-\linespread{1.1} % Line spacing
+\linespread{1} % Line spacing
 
-
+% FONT THEMES
+% ----------------------------------
+% \usepackage{kerkis}
+% ----------------------------------
+% \usepackage{kmath,kerkis} % The order of the packages matters; kmath changes the default text font
+% \usepackage[T1]{fontenc}
+% ----------------------------------
 
 % Hyper references - PDF 
 % -----------------------
@@ -52,9 +58,11 @@
 % -----------------------
 \usepackage{fancyhdr}
 \usepackage{lastpage}
+
+\lhead{\fancyplain{}{\markright }} 
 \pagestyle{fancy}
 \fancyhf{}
-\fancyhead[LO]{Recursive Ling $2^{n-1}$ Binary Adder}
+\fancyhead[LO]{\leftmark}
 \fancyfoot[C,CO]{Page \thepage\ from \pageref{LastPage}}
 \setlength{\headheight}{14pt}
 
