@@ -205,8 +205,17 @@ $(G^*_{-1},P^*_{-1}) = (G_{n-1},P_{n-1})$, συμβολίζοντας $G^*$ τα
 \label{eq:GgG=Gg}
     (G_i,P_i)\circledast(g,p)\circledast(G_i,P_i) = (G_i,P_i)\circledast(g,p)
 \end{equation}
-\textcolor{red}{[Απόδειξη απο το \cite{vergos} Lemma 3]}
-\\\\
+Απόδειξη
+\begin{equation*}
+    \begin{split}
+        (G_i,P_i)\circledast(g,p)\circledast(G_i,P_i) &= (G_i + P_i*g,P_i*p) \circledast (G_i,P_i) \\
+        &= (G_i + P_i*g + P_i*p*G_i , P_i*p*P_i)\\
+        &= (G_i*(1 + P_i*p) + P_i*g , P_i*p )\\
+        &= (G_i + P_i*g , P_i * p)\\
+        &= (G_i,P_i) \circledast (g,p)
+    \end{split}
+\end{equation*}
+\\
 Από την εξίσωση \ref{eq:(G*,P*)} αποδεικνύεται 
 \begin{equation}
 \label{eq:(G*,P*)_new}
