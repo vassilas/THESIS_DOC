@@ -184,8 +184,8 @@
         Jackson & 0.40  & 228.68    & 47.46 \\
         \hline
     \end{tabular}
-\caption{Μη-Τοπογραφικές sparse-4 Μετρήσεις 64-bit}
-\label{topo_sparse4_result_table_64}
+\caption{Μη-Τοπογραφικές sparse-4 Μετρήσεις 8-bit}
+\label{topo_sparse4_result_table_8}
 \end{table}
 %------------------------------------------------------------------------------
 \begin{table}[H]
@@ -201,8 +201,8 @@
         Jackson & 0.48  & 434.99    & 88.50 \\
         \hline
     \end{tabular}
-\caption{Μη-Τοπογραφικές sparse-4 Μετρήσεις 64-bit}
-\label{topo_sparse4_result_table_64}
+\caption{Μη-Τοπογραφικές sparse-4 Μετρήσεις 16-bit}
+\label{topo_sparse4_result_table_16}
 \end{table}
 %------------------------------------------------------------------------------
 \begin{table}[H]
@@ -218,8 +218,8 @@
         Jackson & 0.52  & 983.48    & 198.59 \\
         \hline
     \end{tabular}
-\caption{Μη-Τοπογραφικές sparse-4 Μετρήσεις 64-bit}
-\label{topo_sparse4_result_table_64}
+\caption{Μη-Τοπογραφικές sparse-4 Μετρήσεις 32-bit}
+\label{topo_sparse4_result_table_32}
 \end{table}
 %------------------------------------------------------------------------------
 \begin{table}[H]
@@ -347,12 +347,14 @@
 
 
 
-
-
-\subsection{Γραφικές}
+\clearpage
+% ---------------------------------------------------------
+\begin{multicols}{2}
+[\subsection{Γραφικές}]
+% ---------------------------------------------------------
 
 \begin{center}
-\begin{tikzpicture}
+\begin{tikzpicture}[scale=0.7]
 
 \begin{axis}[
     title={Γράφημα καθυστέρησης},
@@ -400,7 +402,59 @@
 \end{tikzpicture}
 \end{center}
 
+
+% ---------------------------------------------------------
+
+\begin{center}
+\begin{tikzpicture}[scale=0.7]
+
+\begin{axis}[
+    title={Γράφημα καθυστέρησης},
+    xlabel={Μήκος εισόδου (bits)},
+    ylabel={Χρονικά καθηστέρηση (ns)},
+    xmin=0, xmax=70,
+    ymin=30, ymax=70,
+    xtick={8,16,32,64},
+    ytick={30,40,50,60,70},
+    legend pos=north west,
+    ymajorgrids=true,
+    grid style=dashed,
+]
+
+\addplot[
+    color=red,
+    mark=square,
+    ]
+    coordinates {
+    (8,35)(16,43)(32,48)(64,57)
+    };
+    \legend{Jackson}
+
+\addplot[
+    color=blue,
+    mark=*,
+    ]
+    coordinates {
+    (8,39)(16,48)(32,58)(64,65)
+    };
+    \legend{Ling}
+
+\addplot[
+    color=green,
+    mark=triangle,
+    ]
+    coordinates {
+    (8,39)(16,50)(32,55)(64,67)
+    };
+    \legend{Prefix}
+
+   \legend{Jackson,Ling,Prefix}
+   
+\end{axis}
+\end{tikzpicture}
+\end{center}
+
+\end{multicols}
+
+
 \textcolor{red}{[Τις μονάδες μέτρησής πρέπει να διορθώσεις]}
-
-
-
