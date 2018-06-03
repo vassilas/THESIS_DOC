@@ -46,6 +46,182 @@
 %---------------------------------------------------
 
 
+\begin{table}[H]
+\centering
+     \begin{tabularx}{\textwidth}{ || c | X || } 
+
+        \hline
+        level & P-H Equations\\
+        \hline
+        \hline
+        
+        0   & 
+        \begin{tabular}{@{}c@{}}
+        $g_i = a_i * b_i$\\
+        $p_i = a_i + b_i$\\
+        $x_i = a_i \oplus b_i $
+        \end{tabular}\\\hline
+
+        
+        1 (x2)  & 
+        \begin{tabular}{@{}c@{}}
+        $H1_i = g_i + g_{i-1}$\\
+        $P1_i = p_i * p_{i-1}$
+        \end{tabular}\\\hline
+
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $H2_i = H1_i + P1_{i-1}H1_{i-2} + P1_{i-1}P1_{i-3}H1_{i-4} +$ \\ $P1_{i-1}P1_{i-3}P1_{i-5}H1_{i-6}$
+        \end{tabular}\\\hline
+
+
+        SUM   & 
+        \begin{tabular}{@{}c@{}}
+        $ sum_i = H2_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
+        \end{tabular}\\\hline
+
+    \end{tabularx}
+\caption{Ling $2^{8}-1$ Equations}
+\end{table}
+
+
+
+
+\begin{table}[H]
+\centering
+     \begin{tabularx}{\textwidth}{ || c | X || } 
+
+        \hline
+        level & P-H Equations\\
+        \hline
+        \hline
+        
+        0   & 
+        \begin{tabular}{@{}c@{}}
+        $g_i = a_i * b_i$\\
+        $p_i = a_i + b_i$\\
+        $x_i = a_i \oplus b_i $
+        \end{tabular}\\\hline
+
+        
+        1 (x2)  & 
+        \begin{tabular}{@{}c@{}}
+        $H1_i = g_i + g_{i-1} + p_{i-1}g_{i-2} + p_{i-1}p_{i-2}g_{i-3} $\\
+        $P1_i = p_ip_{i-1}p_{i-2}p_{i-3}$
+        \end{tabular}\\\hline
+
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $H2_i = H1_i + P1_{i-1}H1_{i-4} + P1_{i-1}P1_{i-5}H1_{i-8} +$ \\ $P1_{i-1}P1_{i-5}P1_{i-9}H1_{i-12}$
+        \end{tabular}\\\hline
+
+
+        SUM   & 
+        \begin{tabular}{@{}c@{}}
+        $ sum_i = H2_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
+        \end{tabular}\\\hline
+
+    \end{tabularx}
+\caption{Ling $2^{16}-1$ Equations}
+\end{table}
+
+
+
+
+
+\begin{table}[H]
+\centering
+     \begin{tabularx}{\textwidth}{ || c | X || } 
+
+        \hline
+        level & P-H Equations\\
+        \hline
+        \hline
+        
+        0   & 
+        \begin{tabular}{@{}c@{}}
+        $g_i = a_i * b_i$\\
+        $p_i = a_i + b_i$\\
+        $x_i = a_i \oplus b_i $
+        \end{tabular}\\\hline
+
+        
+        1 (x2)  & 
+        \begin{tabular}{@{}c@{}}
+        $H1_i = g_i + g_{i-1}$\\
+        $P1_i = p_i * p_{i-1}$
+        \end{tabular}\\\hline
+
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $H2_i = H1_i + P1_{i-1}H1_{i-2} + P1_{i-1}P1_{i-3}H1_{i-4} +$ \\ $P1_{i-1}P1_{i-3}P1_{i-5}H1_{i-6}$\\
+        $P2_i = P1_{i}P1_{i-2}P1_{i-4}P1_{i-6} $
+        \end{tabular}\\\hline
+
+        
+        3 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $H3_i = H2_i + P2_{i-1}H2_{i-8} + P2_{i-1}P2_{i-9}H2_{i-16} +$ \\ $P2_{i-1}P2_{i-9}P2_{i-17}H2_{i-24}$\\
+        \end{tabular}\\\hline
+        
+        SUM   & 
+        \begin{tabular}{@{}c@{}}
+        $ sum_i = H3_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
+        \end{tabular}\\\hline
+
+    \end{tabularx}
+    
+    
+
+\caption{Ling $2^{32}-1$ Equations}
+\end{table}
+
+
+
+
+
+\begin{table}[H]
+\centering
+     \begin{tabularx}{\textwidth}{ || c | X || } 
+
+        \hline
+        level & P-H Equations\\
+        \hline
+        \hline
+        
+        0   & 
+        \begin{tabular}{@{}c@{}}
+        $g_i = a_i * b_i$\\
+        $p_i = a_i + b_i$\\
+        $x_i = a_i \oplus b_i $
+        \end{tabular}\\\hline
+
+        
+        1 (x2)  & 
+        \begin{tabular}{@{}c@{}}
+        $H1_i = g_i + g_{i-1} + p_{i-1}g_{i-2} + p_{i-1}p_{i-2}g_{i-3} $\\
+        $P1_i = p_ip_{i-1}p_{i-2}p_{i-3}$
+        \end{tabular}\\\hline
+
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $H2_i = H1_i + P1_{i-1}H1_{i-4} + P1_{i-1}P1_{i-5}H1_{i-8} +$ \\ $P1_{i-1}P1_{i-5}P1_{i-9}H1_{i-12}$\\
+        $P2_i = P1_{i}P1_{i-4}P1_{i-8}P1_{i-12}$
+        \end{tabular}\\\hline
+
+        3 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $H3_i = H2_i + P2_{i-1}H2_{i-16} + P2_{i-1}P2_{i-17}H2_{i-32} +$ \\ $P2_{i-1}P2_{i-17}P2_{i-33}H2_{i-48}$\\
+        \end{tabular}\\\hline
+        
+        SUM   & 
+        \begin{tabular}{@{}c@{}}
+        $ sum_i = H2_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
+        \end{tabular}\\\hline
+
+    \end{tabularx}
+\caption{Ling $2^{64}-1$ Equations}
+\end{table}
 
 %\subsubsection{$2^8-1$}
 %%---------------------------------------------------
@@ -84,84 +260,280 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 
 
 
-\subsubsection{$2^8-1$}
+
+
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% 8-bit
+% -----------------------------------------------------------------------------
+\begin{table}[H]
+\centering
+     \begin{tabularx}{\textwidth}{ || c | X || } 
+
+        \hline
+        level & R-Q Equations\\
+        \hline
+        \hline
+        
+        0   & 
+        \begin{tabular}{@{}c@{}}
+        $g_i = a_i * b_i$\\
+        $p_i = a_i + b_i$\\
+        $x_i = a_i \oplus b_i $
+        \end{tabular}\\\hline
+
+        
+        1 (x2)  & 
+        \begin{tabular}{@{}c@{}}
+        $R1_i = g_i + g_{i-1}$\\
+        $Q1_i = p_i * p_{i-1}$
+        \end{tabular}\\\hline
+
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $R2_i = R1_i + R1_{i-2} + Q1_{i-3}*R1_{i-4} + Q1_{i-3}*Q1_{i-5}*R1_{i-6}$
+        \end{tabular}\\\hline
+
+        D   & 
+        \begin{tabular}{@{}c@{}}
+        $ D_i = g_i + p_ig_{i-1} + p_ip_{i-1}p_{i-2}$
+        \end{tabular}\\\hline
+
+        SUM   & 
+        \begin{tabular}{@{}c@{}}
+        $ sum_i = R2_{i-1}\ ?\ (x_i \oplus D_{i-1})\ :\ x_i$
+        \end{tabular}\\\hline
+
+    \end{tabularx}
+    
+    
+    \begin{tabularx}{\textwidth}{X} 
+    \\
+    \end{tabularx}    
+    
+    
+    \begin{tabularx}{\textwidth}{| X | X X X X | } 
+        \hline
+        Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $D_i$ \\
+        \hline
+        Equations & $R^1_{i:i-1}$ & $Q^1_{i:i-1}$ & $R^3_{i:i-7}$ &$ D_{i:i-2}$ \\
+        \hline
+    \end{tabularx}
+\caption{Jackson $2^{8}-1$ Equations}
+\end{table}
+
+% -----------------------------------------------------------------------------
+% 16-bit
+% -----------------------------------------------------------------------------
+\begin{table}[H]
+\centering
+     \begin{tabularx}{\textwidth}{|| c | X ||}
+     
+        \hline
+        level & R-Q Equations\\
+        \hline
+        \hline
+        0   & 
+        \begin{tabular}{@{}c@{}}
+        $g_i = a_i * b_i$\\
+        $p_i = a_i + b_i$\\
+        $x_i = a_i \oplus b_i $
+        \end{tabular}\\\hline
+        
+
+        1 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $R1_i = g_i + g_{i-1} + p_{i-1}g_{i-2} + p_{i-1}p_{i-2}g_{i-3}$\\
+        $Q1_i = p_ip_{i-1}p_{i-2}p_{i-3}$
+        \end{tabular}\\\hline
+       
+
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $R2_i = R1_i + R1_{i-4} + Q1_{i-5}*R1_{i-8} + Q1_{i-5}*Q1_{i-9}*R1_{i-12}$
+        \end{tabular}\\\hline
+        
+
+        D   & 
+        \begin{tabular}{@{}c@{}}$ D_i = p_iR1_i + p_{i-1}Q1_i$
+        \end{tabular}\\\hline
+        
+
+        SUM   & 
+        \begin{tabular}{@{}c@{}}$ sum_i = R2_{i-1}\ ?\ (x_i \oplus D_{i-1})\ :\ x_i$
+        \end{tabular}\\\hline
+        
+    \end{tabularx}
+    
+    
+    \begin{tabularx}{\textwidth}{X} 
+    \\
+    \end{tabularx}  
+    
+    
+    \begin{tabularx}{\textwidth}{| X | X X X X | } 
+        \hline
+        Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $D_i$ \\
+        \hline
+        Equations & $R^1_{i:i-3}$ & $Q^3_{i:i-3}$ & $R^5_{i:i-15}$ &$ D_{i:i-4}$ \\
+        \hline
+    \end{tabularx}
+    
+\caption{Jackson $2^{16}-1$ Equations}
+\end{table}
+
+% -----------------------------------------------------------------------------
+% 32-bit
+% -----------------------------------------------------------------------------
+\begin{table}[H]
+\centering
+     \begin{tabularx}{\textwidth}{|| c | X ||}
+     
+        \hline
+        level & R-Q Equations\\
+        \hline
+        \hline
+        0   & 
+        \begin{tabular}{@{}c@{}}$g_i = a_i * b_i$\\$p_i = a_i + b_i$\\$x_i = a_i \oplus b_i $\end{tabular}\\\hline
+        
+
+        1 (x2)  & 
+        \begin{tabular}{@{}c@{}}
+        $R1_i = g_i + g_{i-1}$\\
+        $Q1_i = p_i * p_{i-1}$
+        \end{tabular}\\\hline
+
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $R2_i = R1_i + R1_{i-2} + Q1_{i-3}*R1_{i-4} + Q1_{i-3}*Q1_{i-5}*R1_{i-6}$\\
+        $Q2_i = Q1_i Q1_{i-2} Q1_{i-4} ( R1_{i-5} + Q1_{i-6})$
+        \end{tabular}\\\hline
+        
+        3 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $R3_i = R2_i + R2_{i-8} + Q2_{i-11}*R2_{i-16} + Q2_{i-11}*Q2_{i-17}*R2_{i-24}$
+        \end{tabular}\\\hline
+
+        D   & 
+        \begin{tabular}{@{}c@{}}$ D1_i = g_i + p_ig_{i-1} + p_ip_{i-1}p_{i-2}$\\
+        $D_i = D1_i ( R2_i + Q2_{i-3} )$
+        \end{tabular}\\\hline
+        
+        SUM   & 
+        \begin{tabular}{@{}c@{}}$ sum_i = R2_{i-1}\ ?\ (x_i \oplus D_{i-1})\ :\ x_i$
+        \end{tabular}\\\hline
+        
+    
+    \end{tabularx}
+    
+    \begin{tabularx}{\textwidth}{X} 
+    \\
+    \end{tabularx}  
+    
+    
+    \begin{tabularx}{\textwidth}{| c | X X X X X X | } 
+        \hline
+        Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $Q2_i$ & $R3_i$ & $D_i$ \\
+        \hline
+        Equations & $R^1_{i:i-1}$ & $Q^1_{i:i-1}$ & $R^3_{i:i-7}$ & $Q^5_{i:i-7}$ 
+        & $R^{11}_{i:i-31}$ & $ D_{i:i-10}$ \\
+        \hline
+    \end{tabularx}
+    
+    
+\caption{Jackson $2^{32}-1$ Equations}
+\end{table}
+
+% -----------------------------------------------------------------------------
+% 64-bit
+% -----------------------------------------------------------------------------
+\begin{table}[H]
+\centering
+     \begin{tabularx}{\textwidth}{|| c | X ||}
+     
+        \hline
+        level & R-Q Equations\\
+        \hline
+        \hline
+        
+        0   & 
+        \begin{tabular}{@{}c@{}}$g_i = a_i * b_i$\\$p_i = a_i + b_i$\\$x_i = a_i \oplus b_i $\end{tabular}\\\hline
+        
+        1 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $R1_i = g_i + g_{i-1} + p_{i-1}g_{i-2} + p_{i-1}p_{i-2}g_{i-3}$\\
+        $Q1_i = p_ip_{i-1}p_{i-2}p_{i-3}$
+        \end{tabular}\\\hline
+       
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $R2_i = R1_i + R1_{i-4} + Q1_{i-5}*R1_{i-8} + Q1_{i-5}*Q1_{i-9}*R1_{i-12}$\\
+        $Q2_i = Q1_i Q1_{i-4} Q1_{i-8} ( R1_{i-11} + Q1_{i-12})$
+        \end{tabular}\\\hline
+        
+        3 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $R3_i = R2_i + R2_{i-16} + Q2_{i-21}*R2_{i-32} + Q2_{i-21}*Q2_{i-37}*R3_{i-48}$
+        \end{tabular}\\\hline
+        
+        D   & 
+        \begin{tabular}{@{}c@{}}$ D1_i = g_i + p_ig_{i-1} + p_ip_{i-1}p_{i-2}$\\
+        $D2_i = D1_i ( R1_i + Q1_{i-3} )$\\
+        $D_i = D2_i ( R2_i + Q2_{i-5} )$\\
+        \end{tabular}\\\hline
+        
+        SUM   & 
+        \begin{tabular}{@{}c@{}}$ sum_i = R2_{i-1}\ ?\ (x_i \oplus D_{i-1})\ :\ x_i$
+        \end{tabular}\\\hline
+    \end{tabularx}
+    
+
+    
+    \begin{tabularx}{\textwidth}{X} 
+    \\
+    \end{tabularx}  
+    
+    
+    \begin{tabularx}{\textwidth}{| c | X X X X X X | } 
+        \hline
+        Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $Q2_i$ & $R3_i$ & $D_i$ \\
+        \hline
+        Equations & $R^1_{i:i-3}$ & $Q^3_{i:i-3}$ & $R^5_{i:i-15}$ & $Q^{11}_{i:i-15}$ 
+        & $R^{21}_{i:i-63}$ & $ D_{i:i-20}$ \\
+        \hline
+    \end{tabularx}
+    
+\caption{Jackson $2^{64}-1$ Equations}
+\end{table}
+
+% -----------------------------------------------------------------------------
+
+
+
+
+
+%\subsubsection{$2^8-1$}
 %---------------------------------------------------
 
 % Figure
 %
 %--------------------------------------------
 
-\begin{table}[H]
-\centering
-     \begin{tabular}{ c  c  c  c  c } 
-        \hline
-        level & \multicolumn{4}{c}{R-Q Equations}\\
-        \hline
-        \hline
-        0   & 
-        \multicolumn{4}{c}{
-        \begin{tabular}{@{}c@{}}$g_i = a_i * b_i$\\$p_i = a_i + b_i$\\$x_i = a_i \oplus b_i $\end{tabular}
-        }
-        
-        \\ 
-        \hline
-        1 (x2)  & 
-        \multicolumn{4}{c}{
-        \begin{tabular}{@{}c@{}}$R1_i = g_i + g_{i-1}$\\$Q1_i = p_i * p_{i-1}$\end{tabular}
-        }
-       
-        \\ 
-        \hline
-        2 (x4)  & 
-        \multicolumn{4}{c}{
-        \begin{tabular}{@{}c@{}}$R2_i = R1_i + R1_{i-2} + Q1_{i-3}*R1_{i-4} + Q1_{i-3}*Q1_{i-5}*R1_{i-6}$
-        \end{tabular}
-        }
-        
-        \\ 
-        \hline
-        D   & 
-        \multicolumn{4}{c}{
-        \begin{tabular}{@{}c@{}}$ D_i = g_i + p_ig_{i-1} + p_ip_{i-1}p_{i-2}$
-        \end{tabular}
-        }
-        
-        \\ 
-        \hline
-        SUM   & 
-        \multicolumn{4}{c}{
-        \begin{tabular}{@{}c@{}}$ sum_i = R2_{i-1}\ ?\ (x_i \oplus D_{i-1})\ :\ x_i$
-        \end{tabular}
-        }
-        
-        \\
-        \hline
-        \hline
-    Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $D_i$ \\
-    \hline
-    Equations & $R^1_{i:i-1}$ & $Q^1_{i:i-1}$ & $R^3_{i:i-7}$ &$ D_{i:i-2}$ \\
-    \hline
-        
-        
-        \hline
 
-    \end{tabular}
-\caption{Jackson $2^{8}-1$ Equations}
-\end{table}
-
-
-\begin{table}[H]
-\centering
-    \begin{tabular}{|| c || c | c | c | c ||} 
-    \hline
-    Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $D_i$ \\
-    \hline
-    Equations & $R^1_{i:i-1}$ & $Q^1_{i:i-1}$ & $R^3_{i:i-7}$ &$ D_{i:i-2}$ \\
-    \hline
-    \end{tabular}
-\end{table}     
-
-
+% \begin{table}[H]
+% \centering
+%     \begin{tabular}{|| c || c | c | c | c ||} 
+%     \hline
+%     Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $D_i$ \\
+%     \hline
+%     Equations & $R^1_{i:i-1}$ & $Q^1_{i:i-1}$ & $R^3_{i:i-7}$ &$ D_{i:i-2}$ \\
+%     \hline
+%     \end{tabular}
+% \end{table}     
 
 
 % Επίπεδο 1:\\
@@ -210,154 +582,25 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 
 
 
-
-
-Για παράδειγμα:\\
-\rule{\linewidth}{0.5mm}
-\begin{equation*}
-\begin{split}
-p_7 =& a_7 + b_7\\
-g_7 =& a_7 * b_7\\
-x_7 =& a_7 \oplus b_7 \\
-R^1_{7:6} =& g_7 + g_{6}\\
-Q^1_{7:6} =& p_7 * p_{6}\\
-R^3_{7:0} =& R^1_{7:6} + R^1_{5:4} + Q^1_{4:3} R^1_{3:2} + Q^1_{4:3} Q^1_{2:1} R^1_{1:0}\\
-D_{7:5} =& g_7 + p_7g_{6} + p_7p_{6}p_{5}\\
-sum_7 =& R^3_{6:7}\ ?\ x_7 \oplus D_{6:4}\ :\ x_7 
-\end{split}
-\end{equation*}
-\rule{\linewidth}{0.5mm}
-
+% Για παράδειγμα:\\
+% \rule{\linewidth}{0.5mm}
+% \begin{equation*}
+% \begin{split}
+% p_7 =& a_7 + b_7\\
+% g_7 =& a_7 * b_7\\
+% x_7 =& a_7 \oplus b_7 \\
+% R^1_{7:6} =& g_7 + g_{6}\\
+% Q^1_{7:6} =& p_7 * p_{6}\\
+% R^3_{7:0} =& R^1_{7:6} + R^1_{5:4} + Q^1_{4:3} R^1_{3:2} + Q^1_{4:3} Q^1_{2:1} R^1_{1:0}\\
+% D_{7:5} =& g_7 + p_7g_{6} + p_7p_{6}p_{5}\\
+% sum_7 =& R^3_{6:7}\ ?\ x_7 \oplus D_{6:4}\ :\ x_7 
+% \end{split}
+% \end{equation*}
+% \rule{\linewidth}{0.5mm}
 
 
 
-
-
-
-
-
-
-
-\subsubsection{Λογική περιγραφή για $n={16, 32, 64}$}
-
-
-
-
-
-
-
-
-
-
-
-\begin{table}[H]
-\centering
-     \begin{tabular}{|| c | c ||}
-     
-        \hline
-        level & R-Q Equations\\
-        \hline
-        \hline
-        0   & 
-        \begin{tabular}{@{}c@{}}$g_i = a_i * b_i$\\$p_i = a_i + b_i$\\$x_i = a_i \oplus b_i $\end{tabular}
-        
-        \\ 
-        \hline
-        1 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $R1_i = g_i + g_{i-1} + p_{i-1}g_{i-2} + p_{i-1}p_{i-2}g_{i-3}$\\
-        $Q1_i = p_ip_{i-1}p_{i-2}p_{i-3}$
-        \end{tabular}
-       
-        \\ 
-        \hline
-        2 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $R2_i = R1_i + R1_{i-4} + Q1_{i-5}*R1_{i-8} + Q1_{i-5}*Q1_{i-9}*R1_{i-12}$
-        \end{tabular}
-        
-        \\ 
-        \hline
-        D   & 
-        \begin{tabular}{@{}c@{}}$ D_i = p_iR1_i + p_{i-1}Q1_i$
-        \end{tabular}
-        
-        \\ 
-        \hline
-        SUM   & 
-        \begin{tabular}{@{}c@{}}$ sum_i = R2_{i-1}\ ?\ (x_i \oplus D_{i-1})\ :\ x_i$
-        \end{tabular}
-        
-        \\
-        \hline
-    
-    \end{tabular}
-\caption{Jackson $2^{16}-1$ Equations}
-\end{table}
-
-
-
-
-
-
-
-
-
-\begin{table}[H]
-\centering
-     \begin{tabular}{|| c | c ||}
-     
-        \hline
-        level & R-Q Equations\\
-        \hline
-        \hline
-        0   & 
-        \begin{tabular}{@{}c@{}}$g_i = a_i * b_i$\\$p_i = a_i + b_i$\\$x_i = a_i \oplus b_i $\end{tabular}
-        
-        \\ 
-        \hline
-        1 (x2)  & 
-        \begin{tabular}{@{}c@{}}$R1_i = g_i + g_{i-1}$\\$Q1_i = p_i * p_{i-1}$\end{tabular}
-       
-        \\ 
-        \hline
-        2 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $R2_i = R1_i + R1_{i-2} + Q1_{i-3}*R1_{i-4} + Q1_{i-3}*Q1_{i-5}*R1_{i-6}$\\
-        $Q2_i = Q1_i Q1_{i-2} Q1_{i-4} ( R1_{i-5} + Q1_{i-6})$
-        \end{tabular}
-        
-        \\ 
-        \hline
-        3 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $R3_i = R2_i + R2_{i-8} + Q2_{i-11}*R2_{i-16} + Q2_{i-11}*Q2_{i-17}*R2_{i-24}$
-        \end{tabular}
-        
-        \\ 
-        \hline
-        D   & 
-        \begin{tabular}{@{}c@{}}$ D1_i = g_i + p_ig_{i-1} + p_ip_{i-1}p_{i-2}$\\
-        $D_i = D1_i ( R2_i + Q2_{i-3} )$
-        \end{tabular}
-        
-        \\ 
-        \hline
-        SUM   & 
-        \begin{tabular}{@{}c@{}}$ sum_i = R2_{i-1}\ ?\ (x_i \oplus D_{i-1})\ :\ x_i$
-        \end{tabular}
-        
-        \\
-        \hline
-    
-    \end{tabular}
-\caption{Jackson $2^{32}-1$ Equations}
-\end{table}
-
-
-
-
-
+%\subsubsection{Λογική περιγραφή για $n={16, 32, 64}$}
 
 
 %\subsubsection{$2^{16}-1$}
