@@ -128,12 +128,133 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 \subsection{Αλγεβρική περιγραφή των αθροιστών}
 \subsubsection{Prefix $2^n-1$}
 
+
+
+
+
 % -----------------------------------------------------------------------------
 % 8-bit
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{ || c | X || } 
+     \begin{tabularx}{\textwidth}{ | g | X | } 
+
+        \hline
+        level & P-G Equations\\
+        \hline
+        \hline
+ 
+        0   & 
+        \begin{tabular}{@{}c@{}}
+        $g_i = a_i * b_i$\\
+        $p_i = a_i + b_i$\\
+        $x_i = a_i \oplus b_i $
+        \end{tabular}\\\hline
+        
+        % 8 - BIT
+        % ----------------------------------------------------------------------
+        \cellcolor{black} & \cellcolor{LightGray}8-bit \\\hline
+        
+        1 (x2)  & 
+        %\cellcolor{LightGray}
+        \begin{tabular}{@{}c@{}}
+        $G1_i = g_i + p_ig_{i-1}$\\
+        $P1_i = p_i * p_{i-1}$
+        \end{tabular}\\\hline
+
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $G2_i = G1_i + P1_{i}G1_{i-2} + P1_{i}P1_{i-2}G1_{i-4} +$ \\ $P1_{i}P1_{i-2}P1_{i-4}G1_{i-6}$
+        \end{tabular}\\\hline
+        
+        % 16 - BIT
+        % ----------------------------------------------------------------------
+        \cellcolor{black} & \cellcolor{LightGray}16-bit \\\hline
+        
+        1 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $G1_i = g_i + p_ig_{i-1} + p_ip_{i-1}g_{i-1} + p_ip_{i-1}p_{i-2}g_{i-1}$\\
+        $P1_i = p_i p_{i-1} p_{i-2} p_{i-3}$
+        \end{tabular}\\\hline
+
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $G2_i = G1_i + P1_{i}G1_{i-4} + P1_{i}P1_{i-4}G1_{i-8} +$ \\ $P1_{i}P1_{i-4}P1_{i-8}G1_{i-12}$
+        \end{tabular}\\\hline
+        
+        % 32 - BIT
+        % ----------------------------------------------------------------------
+        \cellcolor{black} & \cellcolor{LightGray}32-bit \\\hline
+        
+        1 (x2)  & 
+        \begin{tabular}{@{}c@{}}
+        $G1_i = g_i + p_ig_{i-1}$\\
+        $P1_i = p_i * p_{i-1}$
+        \end{tabular}\\\hline
+
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $G2_i = G1_i + P1_{i}G1_{i-2} + P1_{i}P1_{i-2}G1_{i-4} +$ \\ $P1_{i}P1_{i-2}P1_{i-4}G1_{i-6}$\\
+        $P2_i = P1_{i}P1_{i-2}P1_{i-4}P_{i-6}$
+        \end{tabular}\\\hline
+        
+        3 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $G3_i = G2_i + P2_{i}G2_{i-8} + P2_{i}P2_{i-8}G2_{i-16} +$ \\ $P2_{i}P2_{i-8}P2_{i-16}G2_{i-24}$\\
+        \end{tabular}\\\hline
+        
+        % 64 - BIT
+        % ----------------------------------------------------------------------
+        \cellcolor{black} & \cellcolor{LightGray}64-bit \\\hline
+        
+        1 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $G1_i = g_i + p_ig_{i-1} + p_ip_{i-1}g_{i-1} + p_ip_{i-1}p_{i-2}g_{i-1}$\\
+        $P1_i = p_i p_{i-1} p_{i-2} p_{i-3}$
+        \end{tabular}\\\hline
+
+        2 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $G2_i = G1_i + P1_{i}G1_{i-4} + P1_{i}P1_{i-4}G1_{i-8} +$ \\ $P1_{i}P1_{i-4}P1_{i-8}G1_{i-12}$\\
+        $P2_i = P1_{i}P1_{i-4}P1_{i-8}P1_{i-12}$
+        \end{tabular}\\\hline
+        
+        3 (x4)  & 
+        \begin{tabular}{@{}c@{}}
+        $G3_i = G2_i + P2_{i}G2_{i-16} + P2_{i}P2_{i-16}G2_{i-32} +$ \\ $P2_{i}P2_{i-16}P2_{i-32}G2_{i-48}$\\
+        \end{tabular}\\\hline
+        
+
+        \cellcolor{black} & \cellcolor{LightGray} \\\hline
+        
+        SUM   & 
+        \begin{tabular}{@{}c@{}}
+        $ sum_i = G_{i-1} \oplus x_i$
+        \end{tabular}\\\hline
+
+    \end{tabularx}
+\caption{Prefix $2^{8}-1$ Equations}
+\end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% 8-bit
+% -----------------------------------------------------------------------------
+\begin{table}[H]
+\centering
+     \begin{tabularx}{\textwidth}{ | g | X | } 
 
         \hline
         level & P-G Equations\\
@@ -148,6 +269,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
         \end{tabular}\\\hline
 
         1 (x2)  & 
+        %\cellcolor{LightGray}
         \begin{tabular}{@{}c@{}}
         $G1_i = g_i + p_ig_{i-1}$\\
         $P1_i = p_i * p_{i-1}$
@@ -174,7 +296,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{ || c | X || } 
+     \begin{tabularx}{\textwidth}{ | g | X | } 
 
         \hline
         level & P-G Equations\\
@@ -214,8 +336,8 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{ || c | X || } 
-
+     \begin{tabularx}{\textwidth}{ | g | X | } 
+    
         \hline
         level & P-G Equations\\
         \hline
@@ -260,7 +382,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{ || c | X || } 
+     \begin{tabularx}{\textwidth}{ || g | X || } 
 
         \hline
         level & P-G Equations\\
@@ -319,7 +441,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{ || c | X || } 
+     \begin{tabularx}{\textwidth}{ || g | X || } 
 
         \hline
         level & P-H Equations\\
@@ -361,7 +483,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{ || c | X || } 
+     \begin{tabularx}{\textwidth}{ || g | X || } 
 
         \hline
         level & P-H Equations\\
@@ -405,7 +527,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{ || c | X || } 
+     \begin{tabularx}{\textwidth}{ || g | X || } 
 
         \hline
         level & P-H Equations\\
@@ -458,7 +580,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{ || c | X || } 
+     \begin{tabularx}{\textwidth}{ || g | X || } 
 
         \hline
         level & P-H Equations\\
@@ -531,7 +653,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{ || c | X || } 
+     \begin{tabularx}{\textwidth}{ || g | X || } 
 
         \hline
         level & R-Q Equations\\
@@ -575,10 +697,10 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
     \end{tabularx}    
     
     
-    \begin{tabularx}{\textwidth}{| X | X X X X | } 
-        \hline
+    \begin{tabularx}{\textwidth}{| g | X X X X | } 
+        \hline\rowcolor{LightGray}
         Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $D_i$ \\
-        \hline
+        \hline\rowcolor{LightGray}
         Equations & $R^1_{i:i-1}$ & $Q^1_{i:i-1}$ & $R^3_{i:i-7}$ &$ D_{i:i-2}$ \\
         \hline
     \end{tabularx}
