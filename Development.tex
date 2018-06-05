@@ -126,14 +126,32 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 
 
 \subsection{Αλγεβρική περιγραφή των αθροιστών}
+
+Η περιγραφή των απλών Prefix καθώς και των Ling αθροιστών υπολοίπου $2^n-1$ 
+εφαρμόζεται αλγεβρικά σε ένα πίνακα για το κάθε είδος παραγοντοποίησης εκτός
+των αθροιστών Jackson όπου παρουσιάζεται μία πιο αναλυτική, αλγεβρική επίσης, προσέγγιση.
+Στους παρακάτω πίνακες, στην δεξιά στήλη υποδεικνύεται το βάθος του επιπέδου στο 
+προθεματικό δέντρο και συνοδεύεται από το πλήθος των εισόδων της παραγοντοποίησης 
+που εφαρμόζεται στο επίπεδο αυτό ( σε παρένθεση ).
+
+Με σκοπό την ευ-ανάγνωση των συναρτήσεων που θα διατυπωθούν παρακάτω, αναιρείται 
+η παρακάτω συμβολική αναπαράσταση που δηλώθηκε σε προηγούμενα κεφάλαια.
+\begin{equation*}
+    X_i = X_{i:0}
+\end{equation*}
+όπου X ενα απο τα σήματα G,P,H,R και Q.
+Με σκοπό την χρήση του υπογεγραμμένου ως δείκτη, δίνοντάς την παρακάτω νέα ερμηνεία
+\begin{equation*}
+    X_i = X_{i:i-k+1}
+\end{equation*}
+όπου ο όρος k συμβολίζει το πλήθος των εισόδων που συμπεριλαμβάνει το σήμα X. Ο όρος k
+είναι ίσος με το γινόμενο των στοιχείων, στις παρενθέσεις, τις αριστερής στήλης, 
+του επιπέδου αναφοράς και των προηγούμενων του. Για παράδειγμα στον πίνακα \ref{eq:Prefix_2^{n}-1}
+το σήμα $G3_i$ του 64-bit αθροιστή, έχει $k = 4*4*4$, δηλαδή συμβολίζει το σήμα
+$G3_{i:i-k+1} = G_{i:i-63} $.
+
+
 \subsubsection{Prefix $2^n-1$}
-
-
-
-
-
-% -----------------------------------------------------------------------------
-% 8-bit
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
@@ -153,7 +171,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
         
         % 8 - BIT
         % ----------------------------------------------------------------------
-        \cellcolor{black} & \cellcolor{LightGray}8-bit \\\hline
+        \cellcolor{black} & \cellcolor{Gray}8-bit \\\hline
         
         1 (x2)  & 
         %\cellcolor{LightGray}
@@ -169,7 +187,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
         
         % 16 - BIT
         % ----------------------------------------------------------------------
-        \cellcolor{black} & \cellcolor{LightGray}16-bit \\\hline
+        \cellcolor{black} & \cellcolor{Gray}16-bit \\\hline
         
         1 (x4)  & 
         \begin{tabular}{@{}c@{}}
@@ -184,7 +202,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
         
         % 32 - BIT
         % ----------------------------------------------------------------------
-        \cellcolor{black} & \cellcolor{LightGray}32-bit \\\hline
+        \cellcolor{black} & \cellcolor{Gray}32-bit \\\hline
         
         1 (x2)  & 
         \begin{tabular}{@{}c@{}}
@@ -205,7 +223,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
         
         % 64 - BIT
         % ----------------------------------------------------------------------
-        \cellcolor{black} & \cellcolor{LightGray}64-bit \\\hline
+        \cellcolor{black} & \cellcolor{Gray}64-bit \\\hline
         
         1 (x4)  & 
         \begin{tabular}{@{}c@{}}
@@ -225,7 +243,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
         \end{tabular}\\\hline
         
 
-        \cellcolor{black} & \cellcolor{LightGray} \\\hline
+        \cellcolor{black} & \cellcolor{Gray} \\\hline
         
         SUM   & 
         \begin{tabular}{@{}c@{}}
@@ -233,230 +251,37 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
         \end{tabular}\\\hline
 
     \end{tabularx}
-\caption{Prefix $2^{8}-1$ Equations}
+\caption{Prefix $2^{n}-1$ Equations}
+\label{eq:Prefix_2^{n}-1}
 \end{table}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-% -----------------------------------------------------------------------------
-% 8-bit
-% -----------------------------------------------------------------------------
-\begin{table}[H]
-\centering
-     \begin{tabularx}{\textwidth}{ | g | X | } 
-
-        \hline
-        level & P-G Equations\\
-        \hline
-        \hline
- 
-        0   & 
-        \begin{tabular}{@{}c@{}}
-        $g_i = a_i * b_i$\\
-        $p_i = a_i + b_i$\\
-        $x_i = a_i \oplus b_i $
-        \end{tabular}\\\hline
-
-        1 (x2)  & 
-        %\cellcolor{LightGray}
-        \begin{tabular}{@{}c@{}}
-        $G1_i = g_i + p_ig_{i-1}$\\
-        $P1_i = p_i * p_{i-1}$
-        \end{tabular}\\\hline
-
-        2 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $G2_i = G1_i + P1_{i}G1_{i-2} + P1_{i}P1_{i-2}G1_{i-4} +$ \\ $P1_{i}P1_{i-2}P1_{i-4}G1_{i-6}$
-        \end{tabular}\\\hline
-
-        SUM   & 
-        \begin{tabular}{@{}c@{}}
-        $ sum_i = G_{i-1} \oplus x_i$
-        \end{tabular}\\\hline
-
-    \end{tabularx}
-\caption{Prefix $2^{8}-1$ Equations}
-\end{table}
-
-
-
-% -----------------------------------------------------------------------------
-% 16-bit
-% -----------------------------------------------------------------------------
-\begin{table}[H]
-\centering
-     \begin{tabularx}{\textwidth}{ | g | X | } 
-
-        \hline
-        level & P-G Equations\\
-        \hline
-        \hline
- 
-        0   & 
-        \begin{tabular}{@{}c@{}}
-        $g_i = a_i * b_i$\\
-        $p_i = a_i + b_i$\\
-        $x_i = a_i \oplus b_i $
-        \end{tabular}\\\hline
-
-        1 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $G1_i = g_i + p_ig_{i-1} + p_ip_{i-1}g_{i-1} + p_ip_{i-1}p_{i-2}g_{i-1}$\\
-        $P1_i = p_i p_{i-1} p_{i-2} p_{i-3}$
-        \end{tabular}\\\hline
-
-        2 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $G2_i = G1_i + P1_{i}G1_{i-4} + P1_{i}P1_{i-4}G1_{i-8} +$ \\ $P1_{i}P1_{i-4}P1_{i-8}G1_{i-12}$
-        \end{tabular}\\\hline
-
-        SUM   & 
-        \begin{tabular}{@{}c@{}}
-        $ sum_i = G_{i-1} \oplus x_i$
-        \end{tabular}\\\hline
-
-    \end{tabularx}
-\caption{Prefix $2^{16}-1$ Equations}
-\end{table}
-
-
-% -----------------------------------------------------------------------------
-% 32-bit
-% -----------------------------------------------------------------------------
-\begin{table}[H]
-\centering
-     \begin{tabularx}{\textwidth}{ | g | X | } 
-    
-        \hline
-        level & P-G Equations\\
-        \hline
-        \hline
- 
-        0   & 
-        \begin{tabular}{@{}c@{}}
-        $g_i = a_i * b_i$\\
-        $p_i = a_i + b_i$\\
-        $x_i = a_i \oplus b_i $
-        \end{tabular}\\\hline
-
-        1 (x2)  & 
-        \begin{tabular}{@{}c@{}}
-        $G1_i = g_i + p_ig_{i-1}$\\
-        $P1_i = p_i * p_{i-1}$
-        \end{tabular}\\\hline
-
-        2 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $G2_i = G1_i + P1_{i}G1_{i-2} + P1_{i}P1_{i-2}G1_{i-4} +$ \\ $P1_{i}P1_{i-2}P1_{i-4}G1_{i-6}$\\
-        $P2_i = P1_{i}P1_{i-2}P1_{i-4}P_{i-6}$
-        \end{tabular}\\\hline
-        
-        3 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $G3_i = G2_i + P2_{i}G2_{i-8} + P2_{i}P2_{i-8}G2_{i-16} +$ \\ $P2_{i}P2_{i-8}P2_{i-16}G2_{i-24}$\\
-        \end{tabular}\\\hline
-        
-        SUM   & 
-        \begin{tabular}{@{}c@{}}
-        $ sum_i = G_{i-1} \oplus x_i$
-        \end{tabular}\\\hline
-
-    \end{tabularx}
-\caption{Prefix $2^{32}-1$ Equations}
-\end{table}
-
-
-% -----------------------------------------------------------------------------
-% 64-bit
-% -----------------------------------------------------------------------------
-\begin{table}[H]
-\centering
-     \begin{tabularx}{\textwidth}{ || g | X || } 
-
-        \hline
-        level & P-G Equations\\
-        \hline
-        \hline
- 
-        0   & 
-        \begin{tabular}{@{}c@{}}
-        $g_i = a_i * b_i$\\
-        $p_i = a_i + b_i$\\
-        $x_i = a_i \oplus b_i $
-        \end{tabular}\\\hline
-
-        1 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $G1_i = g_i + p_ig_{i-1} + p_ip_{i-1}g_{i-1} + p_ip_{i-1}p_{i-2}g_{i-1}$\\
-        $P1_i = p_i p_{i-1} p_{i-2} p_{i-3}$
-        \end{tabular}\\\hline
-
-        2 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $G2_i = G1_i + P1_{i}G1_{i-4} + P1_{i}P1_{i-4}G1_{i-8} +$ \\ $P1_{i}P1_{i-4}P1_{i-8}G1_{i-12}$\\
-        $P2_i = P1_{i}P1_{i-4}P1_{i-8}P1_{i-12}$
-        \end{tabular}\\\hline
-        
-        3 (x4)  & 
-        \begin{tabular}{@{}c@{}}
-        $G3_i = G2_i + P2_{i}G2_{i-16} + P2_{i}P2_{i-16}G2_{i-32} +$ \\ $P2_{i}P2_{i-16}P2_{i-32}G2_{i-48}$\\
-        \end{tabular}\\\hline
-        
-        SUM   & 
-        \begin{tabular}{@{}c@{}}
-        $ sum_i = G_{i-1} \oplus x_i$
-        \end{tabular}\\\hline
-
-    \end{tabularx}
-\caption{Prefix $2^{64}-1$ Equations}
-\end{table}
-
-
-
-
-
-
-
-
 
 
 
 %---------------------------------------------------
 \subsubsection{Ling $2^n-1$}
 %---------------------------------------------------
-
-% -----------------------------------------------------------------------------
-% 8-bit
-% -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{ || g | X || } 
+     \begin{tabularx}{\textwidth}{ | g | X | } 
 
         \hline
-        level & P-H Equations\\
+        level & H-P Equations\\
         \hline
         \hline
-        
+ 
         0   & 
         \begin{tabular}{@{}c@{}}
         $g_i = a_i * b_i$\\
         $p_i = a_i + b_i$\\
         $x_i = a_i \oplus b_i $
         \end{tabular}\\\hline
-
+        
+        % 8 - BIT
+        % ----------------------------------------------------------------------
+        \cellcolor{black} & \cellcolor{Gray}8-bit \\\hline
         
         1 (x2)  & 
+        %\cellcolor{LightGray}
         \begin{tabular}{@{}c@{}}
         $H1_i = g_i + g_{i-1}$\\
         $P1_i = p_i * p_{i-1}$
@@ -466,37 +291,10 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
         \begin{tabular}{@{}c@{}}
         $H2_i = H1_i + P1_{i-1}H1_{i-2} + P1_{i-1}P1_{i-3}H1_{i-4} +$ \\ $P1_{i-1}P1_{i-3}P1_{i-5}H1_{i-6}$
         \end{tabular}\\\hline
-
-
-        SUM   & 
-        \begin{tabular}{@{}c@{}}
-        $ sum_i = H2_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
-        \end{tabular}\\\hline
-
-    \end{tabularx}
-\caption{Ling $2^{8}-1$ Equations}
-\end{table}
-
-
-% -----------------------------------------------------------------------------
-% 16-bit
-% -----------------------------------------------------------------------------
-\begin{table}[H]
-\centering
-     \begin{tabularx}{\textwidth}{ || g | X || } 
-
-        \hline
-        level & P-H Equations\\
-        \hline
-        \hline
         
-        0   & 
-        \begin{tabular}{@{}c@{}}
-        $g_i = a_i * b_i$\\
-        $p_i = a_i + b_i$\\
-        $x_i = a_i \oplus b_i $
-        \end{tabular}\\\hline
-
+        % 16 - BIT
+        % ----------------------------------------------------------------------
+        \cellcolor{black} & \cellcolor{Gray}16-bit \\\hline
         
         1 (x4)  & 
         \begin{tabular}{@{}c@{}}
@@ -508,39 +306,10 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
         \begin{tabular}{@{}c@{}}
         $H2_i = H1_i + P1_{i-1}H1_{i-4} + P1_{i-1}P1_{i-5}H1_{i-8} +$ \\ $P1_{i-1}P1_{i-5}P1_{i-9}H1_{i-12}$
         \end{tabular}\\\hline
-
-
-        SUM   & 
-        \begin{tabular}{@{}c@{}}
-        $ sum_i = H2_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
-        \end{tabular}\\\hline
-
-    \end{tabularx}
-\caption{Ling $2^{16}-1$ Equations}
-\end{table}
-
-
-
-
-% -----------------------------------------------------------------------------
-% 32-bit
-% -----------------------------------------------------------------------------
-\begin{table}[H]
-\centering
-     \begin{tabularx}{\textwidth}{ || g | X || } 
-
-        \hline
-        level & P-H Equations\\
-        \hline
-        \hline
         
-        0   & 
-        \begin{tabular}{@{}c@{}}
-        $g_i = a_i * b_i$\\
-        $p_i = a_i + b_i$\\
-        $x_i = a_i \oplus b_i $
-        \end{tabular}\\\hline
-
+        % 32 - BIT
+        % ----------------------------------------------------------------------
+        \cellcolor{black} & \cellcolor{Gray}32-bit \\\hline
         
         1 (x2)  & 
         \begin{tabular}{@{}c@{}}
@@ -553,47 +322,15 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
         $H2_i = H1_i + P1_{i-1}H1_{i-2} + P1_{i-1}P1_{i-3}H1_{i-4} +$ \\ $P1_{i-1}P1_{i-3}P1_{i-5}H1_{i-6}$\\
         $P2_i = P1_{i}P1_{i-2}P1_{i-4}P1_{i-6} $
         \end{tabular}\\\hline
-
         
         3 (x4)  & 
         \begin{tabular}{@{}c@{}}
         $H3_i = H2_i + P2_{i-1}H2_{i-8} + P2_{i-1}P2_{i-9}H2_{i-16} +$ \\ $P2_{i-1}P2_{i-9}P2_{i-17}H2_{i-24}$\\
         \end{tabular}\\\hline
         
-        SUM   & 
-        \begin{tabular}{@{}c@{}}
-        $ sum_i = H3_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
-        \end{tabular}\\\hline
-
-    \end{tabularx}
-    
-    
-
-\caption{Ling $2^{32}-1$ Equations}
-\end{table}
-
-
-
-
-% -----------------------------------------------------------------------------
-% 64-bit
-% -----------------------------------------------------------------------------
-\begin{table}[H]
-\centering
-     \begin{tabularx}{\textwidth}{ || g | X || } 
-
-        \hline
-        level & P-H Equations\\
-        \hline
-        \hline
-        
-        0   & 
-        \begin{tabular}{@{}c@{}}
-        $g_i = a_i * b_i$\\
-        $p_i = a_i + b_i$\\
-        $x_i = a_i \oplus b_i $
-        \end{tabular}\\\hline
-
+        % 64 - BIT
+        % ----------------------------------------------------------------------
+        \cellcolor{black} & \cellcolor{Gray}64-bit \\\hline
         
         1 (x4)  & 
         \begin{tabular}{@{}c@{}}
@@ -606,26 +343,23 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
         $H2_i = H1_i + P1_{i-1}H1_{i-4} + P1_{i-1}P1_{i-5}H1_{i-8} +$ \\ $P1_{i-1}P1_{i-5}P1_{i-9}H1_{i-12}$\\
         $P2_i = P1_{i}P1_{i-4}P1_{i-8}P1_{i-12}$
         \end{tabular}\\\hline
-
+        
         3 (x4)  & 
         \begin{tabular}{@{}c@{}}
         $H3_i = H2_i + P2_{i-1}H2_{i-16} + P2_{i-1}P2_{i-17}H2_{i-32} +$ \\ $P2_{i-1}P2_{i-17}P2_{i-33}H2_{i-48}$\\
         \end{tabular}\\\hline
         
+
+        \cellcolor{black} & \cellcolor{Gray} \\\hline
+        
         SUM   & 
         \begin{tabular}{@{}c@{}}
-        $ sum_i = H2_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
+        $ sum_i = H_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
         \end{tabular}\\\hline
 
     \end{tabularx}
-\caption{Ling $2^{64}-1$ Equations}
+\caption{Ling $2^{n}-1$ Equations}
 \end{table}
-
-%\subsubsection{$2^8-1$}
-%%---------------------------------------------------
-%\subsubsection{$2^{16}-1$}
-%\subsubsection{$2^{32}-1$}
-%\subsubsection{$2^{64}-1$}
 
 
 
@@ -636,17 +370,14 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 \subsubsection{Jackson $2^n-1$}
 %---------------------------------------------------
 
-
-
-
-
-
-
-
-
-
-
-
+% -----------------------------------------------------------------------------
+% 8-bit
+% -----------------------------------------------------------------------------
+Στους Jackson αθροιστές υπολοίπου $2^n-1$ η αλγεβρική περιγραφή γίνεται με αναλυτικό τρόπο
+εφόσον αποτελούν το κύριο κομμάτι αυτής της αναφοράς. Συγκεκριμένα σε κάθε πίνακα 
+εκτός από την συναρτησιακή περιγραφή δίνεται και η συμβολική ερμηνεία, έτσι ώστε
+ο αναγνώστης να είναι σε θέση να αναπαράγει τους αθροιστές επικαλούμενος και τον
+εξισώσεων της παραγράφου \ref{subsection:Jackson_Implementations}.
 
 % -----------------------------------------------------------------------------
 % 8-bit
@@ -712,7 +443,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{|| c | X ||}
+     \begin{tabularx}{\textwidth}{|| g | X ||}
      
         \hline
         level & R-Q Equations\\
@@ -757,9 +488,9 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
     
     
     \begin{tabularx}{\textwidth}{| X | X X X X | } 
-        \hline
+        \hline\rowcolor{LightGray}
         Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $D_i$ \\
-        \hline
+        \hline\rowcolor{LightGray}
         Equations & $R^1_{i:i-3}$ & $Q^3_{i:i-3}$ & $R^5_{i:i-15}$ &$ D_{i:i-4}$ \\
         \hline
     \end{tabularx}
@@ -772,7 +503,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{|| c | X ||}
+     \begin{tabularx}{\textwidth}{|| g | X ||}
      
         \hline
         level & R-Q Equations\\
@@ -816,10 +547,10 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
     \end{tabularx}  
     
     
-    \begin{tabularx}{\textwidth}{| c | X X X X X X | } 
-        \hline
+    \begin{tabularx}{\textwidth}{| g | X X X X X X | } 
+        \hline\rowcolor{LightGray}
         Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $Q2_i$ & $R3_i$ & $D_i$ \\
-        \hline
+        \hline\rowcolor{LightGray}
         Equations & $R^1_{i:i-1}$ & $Q^1_{i:i-1}$ & $R^3_{i:i-7}$ & $Q^5_{i:i-7}$ 
         & $R^{11}_{i:i-31}$ & $ D_{i:i-10}$ \\
         \hline
@@ -834,7 +565,7 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 % -----------------------------------------------------------------------------
 \begin{table}[H]
 \centering
-     \begin{tabularx}{\textwidth}{|| c | X ||}
+     \begin{tabularx}{\textwidth}{|| g | X ||}
      
         \hline
         level & R-Q Equations\\
@@ -879,10 +610,10 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
     \end{tabularx}  
     
     
-    \begin{tabularx}{\textwidth}{| c | X X X X X X | } 
-        \hline
+    \begin{tabularx}{\textwidth}{| g | X X X X X X | } 
+        \hline\rowcolor{LightGray}
         Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $Q2_i$ & $R3_i$ & $D_i$ \\
-        \hline
+        \hline\rowcolor{LightGray}
         Equations & $R^1_{i:i-3}$ & $Q^3_{i:i-3}$ & $R^5_{i:i-15}$ & $Q^{11}_{i:i-15}$ 
         & $R^{21}_{i:i-63}$ & $ D_{i:i-20}$ \\
         \hline
@@ -892,6 +623,17 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 \end{table}
 
 % -----------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -1034,6 +776,440 @@ Radix-3, Radix-4 ... ), κάτι που αφορά και τους αθροισ�
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% 8-bit
+% -----------------------------------------------------------------------------
+% \begin{table}[H]
+% \centering
+%      \begin{tabularx}{\textwidth}{ | g | X | } 
+
+%         \hline
+%         level & P-G Equations\\
+%         \hline
+%         \hline
+ 
+%         0   & 
+%         \begin{tabular}{@{}c@{}}
+%         $g_i = a_i * b_i$\\
+%         $p_i = a_i + b_i$\\
+%         $x_i = a_i \oplus b_i $
+%         \end{tabular}\\\hline
+
+%         1 (x2)  & 
+%         %\cellcolor{LightGray}
+%         \begin{tabular}{@{}c@{}}
+%         $G1_i = g_i + p_ig_{i-1}$\\
+%         $P1_i = p_i * p_{i-1}$
+%         \end{tabular}\\\hline
+
+%         2 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $G2_i = G1_i + P1_{i}G1_{i-2} + P1_{i}P1_{i-2}G1_{i-4} +$ \\ $P1_{i}P1_{i-2}P1_{i-4}G1_{i-6}$
+%         \end{tabular}\\\hline
+
+%         SUM   & 
+%         \begin{tabular}{@{}c@{}}
+%         $ sum_i = G_{i-1} \oplus x_i$
+%         \end{tabular}\\\hline
+
+%     \end{tabularx}
+% \caption{Prefix $2^{8}-1$ Equations}
+% \end{table}
+
+
+
+% -----------------------------------------------------------------------------
+% 16-bit
+% -----------------------------------------------------------------------------
+% \begin{table}[H]
+% \centering
+%      \begin{tabularx}{\textwidth}{ | g | X | } 
+
+%         \hline
+%         level & P-G Equations\\
+%         \hline
+%         \hline
+ 
+%         0   & 
+%         \begin{tabular}{@{}c@{}}
+%         $g_i = a_i * b_i$\\
+%         $p_i = a_i + b_i$\\
+%         $x_i = a_i \oplus b_i $
+%         \end{tabular}\\\hline
+
+%         1 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $G1_i = g_i + p_ig_{i-1} + p_ip_{i-1}g_{i-1} + p_ip_{i-1}p_{i-2}g_{i-1}$\\
+%         $P1_i = p_i p_{i-1} p_{i-2} p_{i-3}$
+%         \end{tabular}\\\hline
+
+%         2 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $G2_i = G1_i + P1_{i}G1_{i-4} + P1_{i}P1_{i-4}G1_{i-8} +$ \\ $P1_{i}P1_{i-4}P1_{i-8}G1_{i-12}$
+%         \end{tabular}\\\hline
+
+%         SUM   & 
+%         \begin{tabular}{@{}c@{}}
+%         $ sum_i = G_{i-1} \oplus x_i$
+%         \end{tabular}\\\hline
+
+%     \end{tabularx}
+% \caption{Prefix $2^{16}-1$ Equations}
+% \end{table}
+
+
+% -----------------------------------------------------------------------------
+% 32-bit
+% -----------------------------------------------------------------------------
+% \begin{table}[H]
+% \centering
+%      \begin{tabularx}{\textwidth}{ | g | X | } 
+    
+%         \hline
+%         level & P-G Equations\\
+%         \hline
+%         \hline
+ 
+%         0   & 
+%         \begin{tabular}{@{}c@{}}
+%         $g_i = a_i * b_i$\\
+%         $p_i = a_i + b_i$\\
+%         $x_i = a_i \oplus b_i $
+%         \end{tabular}\\\hline
+
+%         1 (x2)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $G1_i = g_i + p_ig_{i-1}$\\
+%         $P1_i = p_i * p_{i-1}$
+%         \end{tabular}\\\hline
+
+%         2 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $G2_i = G1_i + P1_{i}G1_{i-2} + P1_{i}P1_{i-2}G1_{i-4} +$ \\ $P1_{i}P1_{i-2}P1_{i-4}G1_{i-6}$\\
+%         $P2_i = P1_{i}P1_{i-2}P1_{i-4}P_{i-6}$
+%         \end{tabular}\\\hline
+        
+%         3 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $G3_i = G2_i + P2_{i}G2_{i-8} + P2_{i}P2_{i-8}G2_{i-16} +$ \\ $P2_{i}P2_{i-8}P2_{i-16}G2_{i-24}$\\
+%         \end{tabular}\\\hline
+        
+%         SUM   & 
+%         \begin{tabular}{@{}c@{}}
+%         $ sum_i = G_{i-1} \oplus x_i$
+%         \end{tabular}\\\hline
+
+%     \end{tabularx}
+% \caption{Prefix $2^{32}-1$ Equations}
+% \end{table}
+
+
+% -----------------------------------------------------------------------------
+% 64-bit
+% -----------------------------------------------------------------------------
+% \begin{table}[H]
+% \centering
+%      \begin{tabularx}{\textwidth}{ || g | X || } 
+
+%         \hline
+%         level & P-G Equations\\
+%         \hline
+%         \hline
+ 
+%         0   & 
+%         \begin{tabular}{@{}c@{}}
+%         $g_i = a_i * b_i$\\
+%         $p_i = a_i + b_i$\\
+%         $x_i = a_i \oplus b_i $
+%         \end{tabular}\\\hline
+
+%         1 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $G1_i = g_i + p_ig_{i-1} + p_ip_{i-1}g_{i-1} + p_ip_{i-1}p_{i-2}g_{i-1}$\\
+%         $P1_i = p_i p_{i-1} p_{i-2} p_{i-3}$
+%         \end{tabular}\\\hline
+
+%         2 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $G2_i = G1_i + P1_{i}G1_{i-4} + P1_{i}P1_{i-4}G1_{i-8} +$ \\ $P1_{i}P1_{i-4}P1_{i-8}G1_{i-12}$\\
+%         $P2_i = P1_{i}P1_{i-4}P1_{i-8}P1_{i-12}$
+%         \end{tabular}\\\hline
+        
+%         3 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $G3_i = G2_i + P2_{i}G2_{i-16} + P2_{i}P2_{i-16}G2_{i-32} +$ \\ $P2_{i}P2_{i-16}P2_{i-32}G2_{i-48}$\\
+%         \end{tabular}\\\hline
+        
+%         SUM   & 
+%         \begin{tabular}{@{}c@{}}
+%         $ sum_i = G_{i-1} \oplus x_i$
+%         \end{tabular}\\\hline
+
+%     \end{tabularx}
+% \caption{Prefix $2^{64}-1$ Equations}
+% \end{table}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+% -----------------------------------------------------------------------------
+% 8-bit
+% -----------------------------------------------------------------------------
+% \begin{table}[H]
+% \centering
+%      \begin{tabularx}{\textwidth}{ || g | X || } 
+
+%         \hline
+%         level & P-H Equations\\
+%         \hline
+%         \hline
+        
+%         0   & 
+%         \begin{tabular}{@{}c@{}}
+%         $g_i = a_i * b_i$\\
+%         $p_i = a_i + b_i$\\
+%         $x_i = a_i \oplus b_i $
+%         \end{tabular}\\\hline
+
+        
+%         1 (x2)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $H1_i = g_i + g_{i-1}$\\
+%         $P1_i = p_i * p_{i-1}$
+%         \end{tabular}\\\hline
+
+%         2 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $H2_i = H1_i + P1_{i-1}H1_{i-2} + P1_{i-1}P1_{i-3}H1_{i-4} +$ \\ $P1_{i-1}P1_{i-3}P1_{i-5}H1_{i-6}$
+%         \end{tabular}\\\hline
+
+
+%         SUM   & 
+%         \begin{tabular}{@{}c@{}}
+%         $ sum_i = H2_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
+%         \end{tabular}\\\hline
+
+%     \end{tabularx}
+% \caption{Ling $2^{8}-1$ Equations}
+% \end{table}
+
+
+% -----------------------------------------------------------------------------
+% 16-bit
+% -----------------------------------------------------------------------------
+% \begin{table}[H]
+% \centering
+%      \begin{tabularx}{\textwidth}{ || g | X || } 
+
+%         \hline
+%         level & P-H Equations\\
+%         \hline
+%         \hline
+        
+%         0   & 
+%         \begin{tabular}{@{}c@{}}
+%         $g_i = a_i * b_i$\\
+%         $p_i = a_i + b_i$\\
+%         $x_i = a_i \oplus b_i $
+%         \end{tabular}\\\hline
+
+        
+%         1 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $H1_i = g_i + g_{i-1} + p_{i-1}g_{i-2} + p_{i-1}p_{i-2}g_{i-3} $\\
+%         $P1_i = p_ip_{i-1}p_{i-2}p_{i-3}$
+%         \end{tabular}\\\hline
+
+%         2 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $H2_i = H1_i + P1_{i-1}H1_{i-4} + P1_{i-1}P1_{i-5}H1_{i-8} +$ \\ $P1_{i-1}P1_{i-5}P1_{i-9}H1_{i-12}$
+%         \end{tabular}\\\hline
+
+
+%         SUM   & 
+%         \begin{tabular}{@{}c@{}}
+%         $ sum_i = H2_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
+%         \end{tabular}\\\hline
+
+%     \end{tabularx}
+% \caption{Ling $2^{16}-1$ Equations}
+% \end{table}
+
+
+
+
+% -----------------------------------------------------------------------------
+% 32-bit
+% -----------------------------------------------------------------------------
+% \begin{table}[H]
+% \centering
+%      \begin{tabularx}{\textwidth}{ || g | X || } 
+
+%         \hline
+%         level & P-H Equations\\
+%         \hline
+%         \hline
+        
+%         0   & 
+%         \begin{tabular}{@{}c@{}}
+%         $g_i = a_i * b_i$\\
+%         $p_i = a_i + b_i$\\
+%         $x_i = a_i \oplus b_i $
+%         \end{tabular}\\\hline
+
+        
+%         1 (x2)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $H1_i = g_i + g_{i-1}$\\
+%         $P1_i = p_i * p_{i-1}$
+%         \end{tabular}\\\hline
+
+%         2 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $H2_i = H1_i + P1_{i-1}H1_{i-2} + P1_{i-1}P1_{i-3}H1_{i-4} +$ \\ $P1_{i-1}P1_{i-3}P1_{i-5}H1_{i-6}$\\
+%         $P2_i = P1_{i}P1_{i-2}P1_{i-4}P1_{i-6} $
+%         \end{tabular}\\\hline
+
+        
+%         3 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $H3_i = H2_i + P2_{i-1}H2_{i-8} + P2_{i-1}P2_{i-9}H2_{i-16} +$ \\ $P2_{i-1}P2_{i-9}P2_{i-17}H2_{i-24}$\\
+%         \end{tabular}\\\hline
+        
+%         SUM   & 
+%         \begin{tabular}{@{}c@{}}
+%         $ sum_i = H3_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
+%         \end{tabular}\\\hline
+
+%     \end{tabularx}
+    
+    
+
+% \caption{Ling $2^{32}-1$ Equations}
+% \end{table}
+
+
+
+
+% -----------------------------------------------------------------------------
+% 64-bit
+% -----------------------------------------------------------------------------
+% \begin{table}[H]
+% \centering
+%      \begin{tabularx}{\textwidth}{ || g | X || } 
+
+%         \hline
+%         level & P-H Equations\\
+%         \hline
+%         \hline
+        
+%         0   & 
+%         \begin{tabular}{@{}c@{}}
+%         $g_i = a_i * b_i$\\
+%         $p_i = a_i + b_i$\\
+%         $x_i = a_i \oplus b_i $
+%         \end{tabular}\\\hline
+
+        
+%         1 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $H1_i = g_i + g_{i-1} + p_{i-1}g_{i-2} + p_{i-1}p_{i-2}g_{i-3} $\\
+%         $P1_i = p_ip_{i-1}p_{i-2}p_{i-3}$
+%         \end{tabular}\\\hline
+
+%         2 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $H2_i = H1_i + P1_{i-1}H1_{i-4} + P1_{i-1}P1_{i-5}H1_{i-8} +$ \\ $P1_{i-1}P1_{i-5}P1_{i-9}H1_{i-12}$\\
+%         $P2_i = P1_{i}P1_{i-4}P1_{i-8}P1_{i-12}$
+%         \end{tabular}\\\hline
+
+%         3 (x4)  & 
+%         \begin{tabular}{@{}c@{}}
+%         $H3_i = H2_i + P2_{i-1}H2_{i-16} + P2_{i-1}P2_{i-17}H2_{i-32} +$ \\ $P2_{i-1}P2_{i-17}P2_{i-33}H2_{i-48}$\\
+%         \end{tabular}\\\hline
+        
+%         SUM   & 
+%         \begin{tabular}{@{}c@{}}
+%         $ sum_i = H2_{i-1}\ ?\ (x_i \oplus p_{i-1})\ :\ x_i$
+%         \end{tabular}\\\hline
+
+%     \end{tabularx}
+% \caption{Ling $2^{64}-1$ Equations}
+% \end{table}
+
+%\subsubsection{$2^8-1$}
+%%---------------------------------------------------
+%\subsubsection{$2^{16}-1$}
+%\subsubsection{$2^{32}-1$}
+%\subsubsection{$2^{64}-1$}
 
 
 
