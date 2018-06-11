@@ -104,8 +104,12 @@ $\circledast$ την παρακάτω λειτουργιά :
 Σε κάθε μαύρο κόμβο ουσιαστικά υλοποιείται η λογική συνάρτηση του τελεστή $\circledast$
 που παρουσιάστηκε προηγουμένως. Ο παραπάνω αθροιστής υλοποιεί τον προθεματικό αλγόριθμο
 σειριακά με αποτέλεσμα να είναι πολύ αργό το μοντέλο αλλά να καταλαμβάνει μικρότερο εμβαδόν
-από άλλες τοπολογίες αθροιστών προθέματος που θα παρουσιαστούν στην συνέχεια.
-
+από άλλες τοπολογίες αθροιστών προθέματος που θα παρουσιαστούν στην συνέχεια.\\
+\textcolor{red}{
+Βαθος $= O(n)$\\
+αριθμός κόμβων $ = n-1$\\
+max fan-out $ = 2$
+}
 
 
 
@@ -132,6 +136,26 @@ $\circledast$ την παρακάτω λειτουργιά :
 
 \subsection{Δέντρα-Δομές Προθεμάτων}
 
+
+\subsubsection{J. Sklansky}
+Μία από τις πρώτες παράλληλες τοπολογίες που προτάθηκε ήταν το 1960 απο τον Sklansky \cite{5219822}. Το πλεονέκτημα της είναι το ελάχιστο βάθος. Στην εικόνα \ref{Ladner-FischerTree} παρουσιάζεται ένα παράδειγμα υπολογισμού των κρατουμένων για είσοδο των οκτώ δυαδικών ψηφίων. Το βάθος σε αυτή την περίπτωση είναι τρία επίπεδα. Παρατηρείται πως ο κόμβος του κρατουμένου $c_4$ εκτός απο το ίδιο το κρατούμενο οδηγεί (Fan-out) επιπλέον τέσσερις εισόδους αλλών κόμβων. Το υψηλό Fan-Out των κόμβων είναι το σημείο στο οποίο μειονεκτεί ο σχεδιασμός αυτος.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{Ladner-Fischer.png}
+    \caption{J. Sklansky Prefix Tree Adder}
+    \label{Ladner-FischerTree}
+\end{figure}
+\textcolor{red}{
+Βαθος $= log(n)$\\
+αριθμός κόμβων $ = $\\
+max fan-out $ = n/2 + 1$
+}
+
+\subsubsection{Kogge-Stone}
+
+
+
+\subsubsection{Brent-Kung}
 \begin{figure}[H]
     \centering
     %\includegraphics[width=\textwidth]{Brent_Kung_Prefix.png}
@@ -143,12 +167,7 @@ $\circledast$ την παρακάτω λειτουργιά :
 
 % \subsubsection{Ladner-Fischer Adder}
 % \textcolor{red}{Ανελυσε Ladner-Fischer}
-\begin{figure}[H]
-    \centering
-    \includegraphics[scale=0.4]{Ladner-Fischer.png}
-    \caption{J. Sklansky Prefix Tree Adder}
-    \label{Ladner-FischerTree}
-\end{figure}
+
 
 \textcolor{red}{
 R.P. Brent and H.T. Kung, A Regular Layout for Parallel
