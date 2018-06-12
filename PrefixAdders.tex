@@ -137,7 +137,10 @@ max fan-out $ = 2$
 \subsection{Δέντρα-Δομές Προθεμάτων}
 
 
-\subsubsection{J. Sklansky}
+
+
+
+\subsubsection*{J. Sklansky}
 Μία από τις πρώτες παράλληλες τοπολογίες που προτάθηκε ήταν το 1960 απο τον Sklansky \cite{5219822}. Το πλεονέκτημα της είναι το ελάχιστο βάθος. Στην εικόνα \ref{Ladner-FischerTree} παρουσιάζεται ένα παράδειγμα υπολογισμού των κρατουμένων για είσοδο των οκτώ δυαδικών ψηφίων. Το βάθος σε αυτή την περίπτωση είναι τρία επίπεδα. Παρατηρείται πως ο κόμβος του κρατουμένου $c_4$ εκτός απο το ίδιο το κρατούμενο οδηγεί (Fan-out) επιπλέον τέσσερις εισόδους αλλών κόμβων. Το υψηλό Fan-Out των κόμβων είναι το σημείο στο οποίο μειονεκτεί ο σχεδιασμός αυτος.
 \begin{figure}[H]
     \centering
@@ -151,14 +154,22 @@ max fan-out $ = 2$
 max fan-out $ = n/2 + 1$
 }
 
-\subsubsection{Kogge-Stone}
-Όπως και οι αρχιτεκτονική που προτάθηκε από τον Sklansky, ετσι και η αρχιτεκτονική
-Kogge-Stone \cite{} έχει μικρό βάθος. Η βασική του όμως διαφορά είναι πως δεν υπάρχει 
-κόμβος με μεγαλύτερο του δυο fan-out, πετυχαίνοντας το θυσιάζοντας από το 
-εμβαδόν του σχεδιασμού.
 
 
-\subsubsection{Brent-Kung}
+
+
+\subsubsection*{Kogge-Stone}
+Όπως και οι αρχιτεκτονική που προτάθηκε από τον Sklansky, έτσι και η αρχιτεκτονική
+Kogge-Stone \cite{5009159} έχει μικρό βάθος. Η βασική του όμως διαφορά είναι πως δεν υπάρχει 
+κόμβος με μεγαλύτερο του δυο fan-out, θυσιάζοντας το εμβαδόν του σχεδιασμού.
+
+
+
+
+
+
+
+\subsubsection*{Brent-Kung}
 \begin{figure}[H]
     \centering
     %\includegraphics[width=\textwidth]{Brent_Kung_Prefix.png}
@@ -168,22 +179,26 @@ Kogge-Stone \cite{} έχει μικρό βάθος. Η βασική του όμ�
 \end{figure}
 
 
+
+
 % \subsubsection{Ladner-Fischer Adder}
 % \textcolor{red}{Ανελυσε Ladner-Fischer}
 
 
-\textcolor{red}{
-R.P. Brent and H.T. Kung, A Regular Layout for Parallel
-Adders,º IEEE Trans. Computers, vol. 31, no. 3, pp. 260-264, Mar.
-1982.
-\\\\
-P.M. Kogge and H.S. Stone, A Parallel Algorithm for the Efficient
-Solution of a General Class of Recurrence Equations, IEEE Trans.
-Computers, vol. 22, no. 8, pp. 783-791, Aug. 1973.
-\\\\
-J. Sklansky, Conditional Sum Addition Logic, IRE Trans.
-Electronic Computers, vol. 9, no. 6, pp. 226-231, June 1960.
-}
+% \textcolor{red}{
+% R.P. Brent and H.T. Kung, A Regular Layout for Parallel
+% Adders,º IEEE Trans. Computers, vol. 31, no. 3, pp. 260-264, Mar.
+% 1982.
+% \\\\
+% P.M. Kogge and H.S. Stone, A Parallel Algorithm for the Efficient
+% Solution of a General Class of Recurrence Equations, IEEE Trans.
+% Computers, vol. 22, no. 8, pp. 783-791, Aug. 1973.
+% \\\\
+% J. Sklansky, Conditional Sum Addition Logic, IRE Trans.
+% Electronic Computers, vol. 9, no. 6, pp. 226-231, June 1960.
+% }
+
+\subsubsection*{Σύγκριση των παράλληλων διατάξεων}
 
 \begin{table}[H]
 \centering
