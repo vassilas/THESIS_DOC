@@ -182,25 +182,10 @@ Kogge-Stone \cite{5009159} έχει μικρό βάθος. Η βασική το�
 
 
 
-% \subsubsection{Ladner-Fischer Adder}
-% \textcolor{red}{Ανελυσε Ladner-Fischer}
-
-
-% \textcolor{red}{
-% R.P. Brent and H.T. Kung, A Regular Layout for Parallel
-% Adders,º IEEE Trans. Computers, vol. 31, no. 3, pp. 260-264, Mar.
-% 1982.
-% \\\\
-% P.M. Kogge and H.S. Stone, A Parallel Algorithm for the Efficient
-% Solution of a General Class of Recurrence Equations, IEEE Trans.
-% Computers, vol. 22, no. 8, pp. 783-791, Aug. 1973.
-% \\\\
-% J. Sklansky, Conditional Sum Addition Logic, IRE Trans.
-% Electronic Computers, vol. 9, no. 6, pp. 226-231, June 1960.
-% }
-
 \subsubsection*{Σύγκριση των παράλληλων διατάξεων}
 
+Στον πίνακα \ref{Prefix_Comparison} εκφράζεται μαθηματικα το πλήθος των επιπέδων, το πλήθος των 
+κόμβων και το μέγιστο Fan-Out ανα αθροιστή, ανάλογα με το μήκος εισόδου του $n$.
 \begin{table}[H]
 \centering
      \begin{tabular}{  c c c c  } 
@@ -230,56 +215,28 @@ Kogge-Stone \cite{5009159} έχει μικρό βάθος. Η βασική το�
         $\log_2n+1$\\
         
         \hline
-        
-        % 0   & 
-        % \begin{tabular}{@{}c@{}}
-        % $g_i = a_i * b_i$\\
-        % $p_i = a_i + b_i$\\
-        % $x_i = a_i \oplus b_i $
-        % \end{tabular}\\\hline
-
-        
-        % 1 (x2)  & 
-        % \begin{tabular}{@{}c@{}}
-        % $R1_i = g_i + g_{i-1}$\\
-        % $Q1_i = p_i * p_{i-1}$
-        % \end{tabular}\\\hline
-
-        % 2 (x4)  & 
-        % \begin{tabular}{@{}c@{}}
-        % $R2_i = R1_i + R1_{i-2} + Q1_{i-3}*R1_{i-4} + Q1_{i-3}*Q1_{i-5}*R1_{i-6}$
-        % \end{tabular}\\\hline
-
-        % D   & 
-        % \begin{tabular}{@{}c@{}}
-        % $ D_i = g_i + p_ig_{i-1} + p_ip_{i-1}p_{i-2}$
-        % \end{tabular}\\\hline
-
-        % SUM   & 
-        % \begin{tabular}{@{}c@{}}
-        % $ sum_i = R2_{i-1}\ ?\ (x_i \oplus D_{i-1})\ :\ x_i$
-        % \end{tabular}\\\hline
 
     \end{tabular}
-    
-    
-    % \begin{tabularx}{\textwidth}{X} 
-    % \\
-    % \end{tabularx}    
-    
-    
-    % \begin{tabularx}{\textwidth}{| g | X X X X | } 
-    %     \hline\rowcolor{LightGray}
-    %     Symbols & $R1_i$ & $Q1_i$ & $R2_i$ & $D_i$ \\
-    %     \hline\rowcolor{LightGray}
-    %     Equations & $R^1_{i:i-1}$ & $Q^1_{i:i-1}$ & $R^3_{i:i-7}$ &$ D_{i:i-2}$ \\
-    %     \hline
-    % \end{tabularx}
+
 \caption{Prefix Comparisson}
+\label{Prefix_Comparison}
 \end{table}
+Στις προθεματικές τοπολογίες που παρουσιάζονται σε αυτή την εργασία κάθε επίπεδο θεωρητικά έχει 
+την ίδια χρονική καθυστέρηση με τα υπόλοιπα επίπεδα. Η παραδοχή αυτή στηρίζεται στο ότι 
+σε κάθε επίπεδο, κάθε κόμβος είναι παράλληλα ή ανεξάρτητος συνδεδεμένος με τους υπόλοιπους
+του ίδιου επιπέδου, με αποτέλεσμα το κρίσιμο μονοπάτι του επιπέδου να είναι ίσο με αυτό του
+κόμβου. Συμπεραίνοντας πως κάθε επίπεδο έχει ίδια καθυστέρηση και ίση με την καθυστέρηση
+ενός κόμβου. Αποτέλεσμα του ισχυρισμού αυτού είναι η συσχέτιση του πλήθους των επιπέδων με 
+την συνολική καθυστέρηση του αθροιστή.
 
-
-
+Η παραπάνω αναλογία μεταξύ των επιπέδων και της καθυστέρησης έχει εφαρμογή και σε φυσικές
+υλοποιήσεις των προθεματικών αθροιστών. Συγκρίνοντας τους αθροιστές Kogge-Stone και Sklansky ως
+προς την ταχύτητα, σύμφωνα με τον παραπάνω ισχυρισμό θα ήταν αναμενόμενο να έχουν την ίδια 
+απόδοση. Συμπεριλαμβάνοντας και το εμβαδόν στην εξίσωση επιλογής ταχύτερου αθροιστή, ως δευτερεύον
+παράγοντα, το πρόβλημα τείνει στην επιλογή του Sklansky. Ο λόγος, όμως που η αρχιτεκτονική 
+Kogge-Stone είναι ιδανική αφορά το μικρό fan-out. Στην περίπτωση κυκλώματος με κόμβους
+που έχουν υψηλό fan-out, είναι αναγκαία η πρόσθεση ηλεκτρονικών στοιχείων για την σωστή οδήγηση,
+με αποτέλεσμα να επιβαρύνετε το σύστημα χρονικά.
 
 
 
@@ -386,15 +343,20 @@ $c_i = G'_i$. Για την ανάκτηση των $(G'_i,P'_i)$ χρησιμο
                     &= ( G_k + P_k*c_{-1} , P_k )
     \end{split}
 \end{equation*}
-\\
+
 Όσο αφορά την τροποποίηση των γραφημάτων για τον συνυπολογισμό κρατουμένου εισόδου
 είναι δυνατό να κρατηθεί ανέπαφη η δομή υπολογίζοντας τα Group Generate και Group Propagate 
 $(G_i,P_i)$ χωρίς το κρατούμενο εισόδου  και στο τέλος προστίθεται ένα ακόμα επίπεδο
 για κάθε δυαδικό ψηφίο $i$ που υλοποιείται η λογική $G_ι + P_ι*c_{-1}$.
-\\\\
-\textcolor{red}{[Βάλε σχήμα που δείχνει το extra επίπεδο]}
-\\\\
-\textcolor{red}{[Βάλε και σχήμα με Kogge-Stone δομή με $c_{in}$]}
-\\\\
-
+Στην εικόνα \ref{Kogge-StoneTree_with_carry_in} παρουσιάζεται ένα παράδειγμα προθεματικού αθροιστή
+με κρατούμενο εισόδου. Εντός του σκιασμένου πλαισίου είναι δυνατό να εφαρμοστεί οποιαδίποτε 
+προθεματική δομή (χωρίς κρατουμενο εισόδου). Στο παράδειγμα αυτό χρησιμοποιήθηκε η 
+αρχιτεκτονική του Kogge-Stone.
+\begin{figure}[H]
+    \centering
+    %\includegraphics[width=\textwidth]{Brent_Kung_Prefix.png}
+    \includegraphics[scale=0.45]{Pictures/Kogge-stone_with_carry_in.png}
+    \caption{Kogge-Stone Prefix Tree Adder with Carry-in}
+    \label{Kogge-StoneTree_with_carry_in}
+\end{figure}
 
