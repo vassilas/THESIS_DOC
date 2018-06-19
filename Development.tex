@@ -28,9 +28,29 @@ Synopsys \cite{vcs-synopsys}.
 χωρίς κρατούμενο. Ο συγκεκριμένος κόμβος είναι και αυτός που αποτελεί το πρώτο επίπεδο
 όλως των αθροιστών, έχει δύο εισόδους, την a και b, και τρεις εξόδους που αναφέρθηκαν 
 στην προηγούμενη πρόταση. Στον πίνακά \ref{table:node_modules} του παραρτήματος 
-\ref{appendix:Node_modules} δίνονται όλα τα modules που υλοποιήθηκαν μαζί με τις συναρτήσεις 
-των εξόδων τους.
+\ref{appendix:Node_modules} δίνονται όλα τα modules που υλοποιήθηκαν μαζί με τις συναρτήσεις των εξόδων τους. Παρακάτω παρουσιάζεται η HDL περιγραφή των κόμβων του πρώτου επιπέδου όλων των αθροιστών, υπέυθυνα για τον υπολογισμό των σημάτων propagate (p), generate (g) και ημι-αθροίσματος (x).
 
+
+\begin{minted}
+[
+frame=lines,
+framesep=2mm,
+baselinestretch=1,
+% bgcolor=LightGray,
+fontsize=\footnotesize,
+linenos
+]{verilog}
+module _gpx(a, b, g, p, x);
+
+    input a, b;
+    output g, p, x;
+    
+    assign p = a | b ;    // propagate 
+    assign g = a & b ;    // generate
+    assign x = a ^ b ;    // half-addition (witout carry in)
+
+endmodule
+\end{minted}
 
 % Tropos grafis toy kwdika
 % Επίσης, για θέματα βελτιστοποίησης επιλέχθηκε η περιγραφή των κυκλωμάτων να γίνει σε αρκετά χαμηλό επίπεδο. Κάθε κόμβος που αντιπροσωπεύει μια λογική συνάρτηση περιγράφηκε σε ξεχωριστή μονάδα. 
