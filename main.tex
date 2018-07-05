@@ -5,17 +5,17 @@
 \usepackage[utf8]{inputenc}
 % \usepackage[english,greek]{babel} % \selectlanguage{english}
 \usepackage{alphabeta}
-%\usepackage[LGR, T1]{fontenc}
+% \usepackage[LGR, T1]{fontenc}
 \linespread{1} % Line spacing
 
 
 
 % FONT THEMES
 % ----------------------------------
-% \usepackage{kerkis}
+\usepackage{kerkis}
 % ----------------------------------
-% \usepackage{kmath,kerkis} % The order of the packages matters; kmath changes the default text font
-% \usepackage[T1]{fontenc}
+\usepackage{kmath} % The order of the packages matters; kmath changes the default text font
+\usepackage[T1]{fontenc}
 % ----------------------------------
 
 
@@ -178,9 +178,9 @@ sorting=ynt
 \renewcommand{\figurename}{Εικόνα}
 \renewcommand{\tablename}{Πίνακας}
 % \renewcommand{\bibname}{Βιβλιογραφία}
-\newcommand{\listequationsname}{\Large{List of Equations}}
-% \renewcommand[\listtablename]{Λίστα Πινάκων}
-% \renewcommand[\listfigurename]{Λίστα Εικόνων}
+% \newcommand{\listequationsname}{\Large{List of Equations}}
+\renewcommand{\listfigurename}{Λίστα των Εικόνων} 
+\renewcommand{\listtablename}{Λίστα των Πινάκων}
 % \renewcommand{\appendixname}{Παραρτήματα}
 
 %-----------------------------------------------------------------------
@@ -207,10 +207,12 @@ sorting=ynt
 \import{./}{Abstract.tex}
 \clearpage
 
+
 \thispagestyle{empty}
 \tableofcontents
 \thispagestyle{empty}
 \clearpage
+
 
 \thispagestyle{empty}
 \listoffigures
