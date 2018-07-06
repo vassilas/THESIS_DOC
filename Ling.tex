@@ -11,7 +11,7 @@
 
 \subsection{Βασική Θεωρία}
 
-Ξεκινώντας από την παρακάτω ισότητα 
+Αρχικά παρουσιάζεται η παρακάτω ισότητα 
 \begin{equation}
     g_i = g_i*p_i
 \end{equation}
@@ -25,9 +25,9 @@
 της συνάρτησης υπολογισμού του σήματος Group Carry Generate του συνόλου $i$ έως $j$ με $i > j$
 \begin{equation}
 \begin{split}
-    G_{i:j} &= g_i + p_ig_{i-1} + p_ip_{i-1}g_{i-2} + ... + p_ip_{i-1}p_{i-1}...p_{j+1}p_j\\
-            &= p_ig_i + p_ig_{i-1} + p_ip_{i-1}g_{i-2} + ... + p_ip_{i-1}p_{i-1}...p_{j+1}p_j\\
-            &= p_i \bigg[ g_i + g_{i-1} + p_{i-1}g_{i-2} + ... + p_{i-1}p_{i-1}...p_{j+1}p_j \bigg]
+    G_{i:j} &= g_i + p_ig_{i-1} + p_ip_{i-1}g_{i-2} + ... + p_ip_{i-1}p_{i-1}...p_{j+1}g_j\\
+            &= p_ig_i + p_ig_{i-1} + p_ip_{i-1}g_{i-2} + ... + p_ip_{i-1}p_{i-1}...p_{j+1}g_j\\
+            &= p_i \bigg[ g_i + g_{i-1} + p_{i-1}g_{i-2} + ... + p_{i-1}p_{i-1}...p_{j+1}g_j \bigg]
 \end{split}
 \end{equation}
 Η τροποποίηση της συνάρτησης $G$ δημιουργεί έναν όρο μέσα στις αγκύλες ο οποίος
