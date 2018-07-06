@@ -368,18 +368,6 @@ Jackson, που στην ουσία είναι μια γενικευμένη έ�
 \subsection{Αραίωση σε Jackson Αρχιτεκτονικές}
 Τεχνικές αραίωσης εφαρμόζονται επίσης και στις Jackson εκφράσεις.
 \label{Jackson_sparse}
-Sparsness-2
- \begin{equation*}
-    \begin{split}
-        sum_i &= x_i \oplus G_{i-1:0}\\
-              &= x_i \oplus D_{i-1:k}R^{i-k}_{i-1:0}\\
-              &= R^{i-k}_{i-1:0} ? x_i \oplus D_{i-1:k} : x_i\\
-        sum_{i+1} &= x_{i+1} \oplus G_{i:0}\\
-                  &= x_{i+1} \oplus (g_i + p_i*G_{i-1:0})\\
-                  &= x_{i+1} \oplus (g_i + p_i*D_{i-1:k}R^{i-k}_{i-1:0})\\
-                  &= R^{i-k}_{i-1:0} ? x_{i+1} \oplus (g_i + p_i*D_{i-1:k}) : x_{i+1} \oplus g_i
-    \end{split} 
- \end{equation*}
 Sparsness-4
 \begin{equation*}
     \begin{split}
@@ -400,7 +388,18 @@ Sparsness-4
         =& R^{i-k}_{i-1:0} ? x_{i+1} \oplus (g_{i+2} + p_{i+2}g_{i+1} + p_{i+2}p_{i+1}g_i + p_{i+2}p_{i+1}p_iD_{i-1:k}) \\&: x_{i+3} \oplus (g_{i+2} + p_{i+2}g_{i+1} + p_{i+2}p_{i+1}g_i)
     \end{split} 
 \end{equation*}
-
+Sparsness-2
+ \begin{equation*}
+    \begin{split}
+        sum_i &= x_i \oplus G_{i-1:0}\\
+              &= x_i \oplus D_{i-1:k}R^{i-k}_{i-1:0}\\
+              &= R^{i-k}_{i-1:0} ? x_i \oplus D_{i-1:k} : x_i\\
+        sum_{i+1} &= x_{i+1} \oplus G_{i:0}\\
+                  &= x_{i+1} \oplus (g_i + p_i*G_{i-1:0})\\
+                  &= x_{i+1} \oplus (g_i + p_i*D_{i-1:k}R^{i-k}_{i-1:0})\\
+                  &= R^{i-k}_{i-1:0} ? x_{i+1} \oplus (g_i + p_i*D_{i-1:k}) : x_{i+1} \oplus g_i
+    \end{split} 
+ \end{equation*}
 
 
 
