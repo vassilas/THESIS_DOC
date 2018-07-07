@@ -8,7 +8,7 @@
 % \usepackage[LGR, T1]{fontenc}
 \linespread{1} % Line spacing
 
-
+\usepackage{setspace}
 
 % FONT THEMES
 % ----------------------------------
@@ -201,11 +201,15 @@ sorting=ynt
 % Blank page
 \newpage\null\thispagestyle{empty}\newpage
 
+\import{./}{Acknowledgement.tex}
+
+\newpage\null\thispagestyle{empty}\newpage
+
 
 % Abstract
 % -------------------------
 \import{./}{Abstract.tex}
-\clearpage
+\newpage\null\thispagestyle{empty}\newpage
 
 
 \thispagestyle{empty}
